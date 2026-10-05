@@ -2,10 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class ExerciseAdapter(ABC):
-    """
-    Interface commune à tous les types d'exercices.
-    """
-
     name = "base"
     priority = 0
 
@@ -14,14 +10,14 @@ class ExerciseAdapter(ABC):
 
     @abstractmethod
     def matches(self):
-        """Retourne True si l'adaptateur reconnaît l'exercice."""
         raise NotImplementedError
 
     @abstractmethod
     def analyze(self):
-        """Retourne une représentation structurée de l'exercice."""
         raise NotImplementedError
 
+    def select(self, index):
+        return False
+
     def actions(self):
-        """Actions propres à l'adaptateur, à surcharger si nécessaire."""
         return {}

@@ -1,12 +1,25 @@
 ACTION_WORDS = {
     "skip": ("passer", "skip"),
-    "validate": ("valider", "validate", "vérifier", "verifier", "confirmer"),
-    "next": ("suivant", "next", "continuer", "continue"),
+    "validate": (
+        "valider",
+        "validate",
+        "vérifier",
+        "verifier",
+        "confirmer",
+        "terminer",
+        "submit",
+    ),
+    "next": (
+        "suivant",
+        "next",
+        "continuer",
+        "continue",
+    ),
 }
 
 
 def find_actions(page):
-    result = []
+    actions = []
     locator = page.locator("button")
 
     for i in range(locator.count()):
@@ -20,6 +33,7 @@ def find_actions(page):
                 button.inner_text().strip()
                 or (button.get_attribute("aria-label") or "").strip()
             )
+            disabled = button.is_disabled()
         except Exception:
             continue
 
@@ -30,25 +44,24 @@ def find_actions(page):
 
         for kind, words in ACTION_WORDS.items():
             if any(word in lowered for word in words):
-                result.append({
+                actions.append({
                     "index": i,
                     "text": text,
+                    "disabled": disabled,
                     "kind": kind,
                 })
                 break
 
-    return result
+    return actions
 
 
 def click_common_action(page, kind):
-    actions = find_actions(page)
-
-    for action in actions:
-        if action["kind"] != kind:
+    for action in find_actions(page):
+        if action["kind"] != kind or action["disabled"]:
             continue
 
-        buttons = page.locator("button")
-        buttons.nth(action["index"]).click()
+        page.locator("button").nth(action["index"]).click()
+        page.wait_for_timeout(350)
         return True
 
     return False

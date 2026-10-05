@@ -1,25 +1,18 @@
 # Changelog
 
-## v0.7
+## v0.7.10
 
-### Architecture
-- création d'un système d'adaptateurs ;
-- registre automatique d'adaptateurs ;
-- séparation du routage de page et de la détection d'exercice ;
-- séparation des actions communes.
+- ajout de FlowController ;
+- détection résultat / score / fin ;
+- Next ou Skip automatique hors-question ;
+- détection `tns-flashcards-prev` / `tns-flashcards-next` ;
+- parcours automatique des flashcards ;
+- arrêt dès qu'une question réelle est détectée ;
+- commande `advance` ;
+- progression automatique après lancement ;
+- progression automatique après next/skip ;
+- limites de boucle.
 
-### Adaptateurs
-- `ordering_dragdrop` validé depuis les diagnostics ;
-- `qcm` générique ;
-- `select` générique ;
-- `text_input` générique ;
-- fallback `unknown`.
+## v0.7.9
 
-### Diagnostics analysés
-- accueil GlobalExam ;
-- exercice de classement chronologique ;
-- frames analytics/publicitaires ignorées dans la logique métier.
-
-## v0.6.1
-- détection `.draggable-item` ;
-- type `ordering_dragdrop`.
+- lancement par clic sur le bloc ou ses descendants.

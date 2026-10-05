@@ -1,13 +1,11 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-GLOBAL_EXAM_URL = "https://general.global-exam.com/"
+START_URL = "https://general.global-exam.com/levels/content/22007"
 AUTH_HOST = "auth.global-exam.com"
 
 
 class BrowserSession:
-    """Gère Chromium avec un profil persistant."""
-
     def __init__(self, profile_dir: Path, logger):
         self.profile_dir = Path(profile_dir)
         self.logger = logger
@@ -29,18 +27,24 @@ class BrowserSession:
         self.page = self.context.pages[0] if self.context.pages else self.context.new_page()
         return self
 
-    def open_global_exam(self):
-        self.logger.info("Ouverture de %s", GLOBAL_EXAM_URL)
-
+    def open_start_page(self):
+        self.logger.info("Ouverture de %s", START_URL)
         self.page.goto(
-            GLOBAL_EXAM_URL,
+            START_URL,
             wait_until="domcontentloaded",
             timeout=60000,
         )
-
         self.wait_until_stable()
 
-    def wait_until_stable(self, delay_ms=1200):
+    def go_to_exercise_list(self):
+        self.page.goto(
+            START_URL,
+            wait_until="domcontentloaded",
+            timeout=60000,
+        )
+        self.wait_until_stable()
+
+    def wait_until_stable(self, delay_ms=700):
         try:
             self.page.wait_for_load_state("domcontentloaded", timeout=15000)
         except Exception:

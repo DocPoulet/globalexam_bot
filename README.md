@@ -1,115 +1,68 @@
-# GlobalExam Bot — v0.7
+# GlobalExam Bot — v0.7.10
 
-La v0.7 remplace le gros détecteur unique par une architecture
-d'adaptateurs spécialisés.
+## Progression automatique hors-question
 
-## Ce que montrent les diagnostics du dépôt
+Cette version ajoute une boucle dédiée aux écrans où il n'y a rien à répondre.
 
-Les diagnostics actuellement présents couvrent réellement :
+### Résultat / score / fin
 
-1. l'accueil GlobalExam ;
-2. une activité de classement chronologique.
+Quand la page indique un résultat, un score ou une fin d'étape :
 
-L'activité observée utilise :
+1. tentative de `Next` / `Suivant` / `Continuer` ;
+2. sinon tentative de `Skip` / `Passer`.
 
-```text
-button.draggable-item
-```
+### Flashcards
 
-Les autres frames observées sont principalement des frames publicitaires,
-analytics ou tracking et ne correspondent pas au contenu pédagogique.
+Le bot détecte :
 
-## Architecture
+- `tns-flashcards-prev`
+- `tns-flashcards-next`
 
-```text
-src/
-├── adapters/
-│   ├── base.py
-│   ├── ordering.py
-│   ├── qcm.py
-│   ├── select.py
-│   ├── text_input.py
-│   └── unknown.py
-├── adapter_registry.py
-├── browser.py
-├── common_actions.py
-├── diagnostics.py
-├── logger.py
-├── main.py
-└── page_router.py
-```
+comme ID ou classe.
 
-## Adaptateurs
+Tant que le bouton Next général n'est pas apparu, il parcourt les flashcards,
+en privilégiant `tns-flashcards-next`.
 
-### ordering_dragdrop
+Dès que Next apparaît, il clique dessus.
 
-Validé à partir des diagnostics réels.
+### Tant qu'il n'y a aucune question
 
-Détecte :
+Ordre de traitement :
 
-```text
-button.draggable-item
-```
+1. question détectée -> arrêt ;
+2. écran fini/score -> Next ou Skip ;
+3. Next visible -> clic ;
+4. flashcards -> parcours jusqu'à Next ;
+5. Skip visible -> clic ;
+6. sinon arrêt pour éviter de cliquer à l'aveugle.
 
-Commandes :
+## Automatique
 
-```text
-drag 1 3
-```
+La progression est lancée :
 
-### qcm
+- juste après l'ouverture d'un exercice ;
+- après un `next` ou `skip` manuel ;
+- après une sélection si la question disparaît.
 
-Préparé pour :
+## Nouvelle commande
 
-```text
-input[type="radio"]
-input[type="checkbox"]
-```
+`advance`
 
-Commande :
+Force la progression jusqu'à la prochaine vraie question.
 
-```text
-choose 2
-```
+## Commandes principales
 
-### select
-
-Préparé pour les listes HTML `<select>`.
-
-Commande :
-
-```text
-select 1 3
-```
-
-### text_input
-
-Préparé pour :
-
-```text
-textarea
-input[type="text"]
-```
-
-Commande :
-
-```text
-fill 1 réponse
-```
-
-## Actions communes
-
-```text
-skip
-validate
-next
-```
-
-## Important
-
-Les adaptateurs QCM/select/text sont génériques pour le moment :
-ils devront être ajustés à partir de diagnostics réels de ces types
-d'activités GlobalExam.
-
-Le seul adaptateur actuellement validé avec le DOM réel est
-`ordering_dragdrop`.
+- `launch`
+- `advance`
+- `menus`
+- `active`
+- `blocks`
+- `a`
+- `select X`
+- `fallback X`
+- `validate`
+- `next`
+- `skip`
+- `list`
+- `r`
+- `q`

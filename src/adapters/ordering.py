@@ -1,98 +1,101 @@
 from .base import ExerciseAdapter
 
+SOURCE_SELECTOR = '[data-name="exam-answer-container"] button.draggable-item'
+TARGET_SELECTOR = '[data-name="user-answer-container"]'
+TARGET_ITEM_SELECTOR = '[data-name="user-answer-container"] button.draggable-item'
 
-class OrderingDragDropAdapter(ExerciseAdapter):
-    """
-    Adaptateur basé sur les diagnostics réels GlobalExam :
-    button.draggable-item.
-    """
 
-    name = "ordering_dragdrop"
+class OrderingAdapter(ExerciseAdapter):
+    name = "ordering_click"
     priority = 100
 
     def matches(self):
-        locator = self.page.locator("button.draggable-item")
-
-        try:
-            return locator.count() > 0
-        except Exception:
-            return False
+        return (
+            self.page.locator(SOURCE_SELECTOR).count() > 0
+            or self.page.locator(TARGET_SELECTOR).count() > 0
+        )
 
     def _question(self):
         for selector in ("main h2", "h2", "legend"):
             locator = self.page.locator(selector)
 
             for i in range(locator.count()):
-                item = locator.nth(i)
-
+                el = locator.nth(i)
                 try:
-                    if not item.is_visible():
-                        continue
-
-                    text = item.inner_text().strip()
+                    if el.is_visible():
+                        text = el.inner_text().strip()
+                        if text:
+                            return text
                 except Exception:
-                    continue
-
-                if text:
-                    return text
+                    pass
 
         return None
 
-    def _items(self):
-        items = []
-        locator = self.page.locator("button.draggable-item")
+    def _items(self, selector, location):
+        result = []
+        locator = self.page.locator(selector)
 
         for i in range(locator.count()):
-            item = locator.nth(i)
+            el = locator.nth(i)
 
             try:
-                if not item.is_visible():
+                if not el.is_visible():
                     continue
 
-                text = item.inner_text().strip()
+                text = el.inner_text().strip()
+                item_id = el.get_attribute("data-draggable-item-id")
+                state = el.get_attribute("data-state")
             except Exception:
                 continue
 
             if text:
-                items.append({
+                result.append({
                     "index": i,
+                    "id": item_id,
                     "text": text,
-                    "kind": "draggable",
+                    "state": state,
+                    "location": location,
                 })
 
-        return items
+        return result
 
     def analyze(self):
+        available = self._items(SOURCE_SELECTOR, "available")
+        placed = self._items(TARGET_ITEM_SELECTOR, "answer")
+
         return {
             "adapter": self.name,
-            "exercise_type": self.name,
+            "exercise_type": "ordering",
             "question": self._question(),
-            "answers": self._items(),
+            "answers": available,
+            "placed": placed,
+            "remaining": len(available),
+            "placed_count": len(placed),
         }
 
-    def drag(self, source_index, target_index):
-        locator = self.page.locator("button.draggable-item")
-
-        if source_index < 0 or target_index < 0:
-            return False
-
-        if source_index >= locator.count() or target_index >= locator.count():
-            return False
-
-        locator.nth(source_index).drag_to(locator.nth(target_index))
-        return True
-
-    def click_item(self, index):
-        locator = self.page.locator("button.draggable-item")
+    def select(self, index):
+        locator = self.page.locator(SOURCE_SELECTOR)
 
         if index < 0 or index >= locator.count():
             return False
 
         locator.nth(index).click()
+        self.page.wait_for_timeout(300)
+        return True
+
+    def drag_fallback(self, index):
+        source = self.page.locator(SOURCE_SELECTOR)
+        target = self.page.locator(TARGET_SELECTOR)
+
+        if index < 0 or index >= source.count() or target.count() == 0:
+            return False
+
+        source.nth(index).drag_to(target.first)
+        self.page.wait_for_timeout(300)
         return True
 
     def actions(self):
         return {
-            "drag": self.drag,
-            "click_item": self.click_item,
+            "select": self.select,
+            "drag_fallback": self.drag_fallback,
         }

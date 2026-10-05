@@ -2,135 +2,251 @@ from pathlib import Path
 
 from adapter_registry import AdapterRegistry
 from browser import BrowserSession
-from common_actions import find_actions, click_common_action
-from diagnostics import save_analysis
+from common_actions import click_common_action, find_actions
+from exercise_launcher import ExerciseLauncher
+from flow_controller import FlowController
 from logger import setup_logger
-from page_router import classify_page
+from state_probe import snapshot, diff
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROFILE_DIR = BASE_DIR / "profile"
-DIAGNOSTICS_DIR = BASE_DIR / "diagnostics"
 
 
-def print_analysis(page, adapter, analysis):
+def show_analysis(page, adapter):
+    analysis = adapter.analyze()
+
     print("\n=== Analyse ===")
-    print(f"Page       : {classify_page(page)}")
+    print(f"URL        : {page.url}")
     print(f"Adaptateur : {analysis['adapter']}")
     print(f"Type       : {analysis['exercise_type']}")
     print(f"Question   : {analysis.get('question') or 'Non détectée'}")
 
     answers = analysis.get("answers", [])
-    print(f"Éléments   : {len(answers)}")
 
     if answers:
-        print("\nContenu détecté :")
-
-        for i, answer in enumerate(answers, start=1):
-            if "text" in answer:
-                print(f"{i}. {answer['text']}")
-            elif "options" in answer:
-                print(f"{i}. liste avec {len(answer['options'])} options")
+        print("\nRéponses / éléments :")
+        for i, item in enumerate(answers, start=1):
+            if "text" in item:
+                print(f"{i}. {item['text']}")
             else:
-                print(f"{i}. {answer}")
+                print(f"{i}. {item}")
+
+    if analysis.get("placed"):
+        print("\nDéjà sélectionnés :")
+        for i, item in enumerate(analysis["placed"], start=1):
+            print(f"{i}. {item['text']}")
 
     actions = find_actions(page)
 
     if actions:
-        print("\nActions communes :")
+        print("\nActions visibles :")
         for action in actions:
-            print(f"- {action['text']} [{action['kind']}]")
+            state = "désactivé" if action["disabled"] else "actif"
+            print(f"- {action['text']} [{action['kind']}, {state}]")
 
 
 def main():
     logger = setup_logger()
-    logger.info("Démarrage GlobalExam Bot v0.7")
+    logger.info("Démarrage GlobalExam Bot v0.7.3")
 
     with BrowserSession(PROFILE_DIR, logger) as session:
         page = session.page
-        session.open_global_exam()
 
-        print("\n=== GlobalExam Bot v0.7 ===")
-        print("Architecture par adaptateurs.\n")
+        print("\n=== GlobalExam Bot v0.7.3 ===")
+        print("Ouverture directe de la liste d'exercices.\n")
+
+        session.open_start_page()
 
         if session.is_login_required():
             print("Connexion nécessaire.")
             print("Connecte-toi dans Chromium puis appuie sur Entrée.")
             input("> ")
-            session.wait_until_stable()
+
+            # Après connexion, on revient explicitement à la liste voulue.
+            session.go_to_exercise_list()
+
+        launcher = ExerciseLauncher(page, logger)
+        flow = FlowController(page, logger)
+
+        print("Recherche d'un vrai exercice disponible...")
+
+        if launcher.launch_first_available():
+            print(f"Exercice lancé : {page.url}")
+            result = flow.advance_until_question()
+            print(
+                f"Progression automatique : "
+                f"{result['state']} ({result['steps']} étape(s))"
+            )
+        else:
+            print(
+                "Aucun exercice n'a pu être lancé automatiquement.\n"
+                "La page de liste reste ouverte. Utilise la commande 'launch' "
+                "pour réessayer après avoir vérifié la page."
+            )
 
         registry = AdapterRegistry(page)
 
         while True:
             print("\nCommandes :")
-            print("  a                    analyser")
-            print("  adapters             liste des adaptateurs")
-            print("  drag X Y             déplacer un draggable")
-            print("  choose X             sélectionner un choix QCM")
-            print("  select X Y           choisir option Y dans liste X")
-            print("  fill X texte         remplir un champ")
-            print("  skip                 Passer")
-            print("  validate             Valider")
-            print("  next                 Suivant")
-            print("  r                    recharger")
-            print("  q                    quitter")
+            print("  a             analyser")
+            print("  select X      sélectionner la réponse X")
+            print("  fallback X    drag de secours")
+            print("  validate      Valider")
+            print("  next          Suivant")
+            print("  skip          Passer")
+            print("  list          revenir à la liste d'exercices")
+            print("  launch        lancer le premier exercice disponible")
+            print("  blocks        afficher les blocs mb-10 + lg:mb-16")
+            print("  menus         afficher les cards de contenu détectées")
+            print("  active        afficher le menu actuellement ouvert")
+            print("  advance       avancer jusqu’à la prochaine question")
+            print("  r             recharger")
+            print("  q             quitter")
 
             cmd = input("> ").strip()
+            low = cmd.lower()
 
-            if cmd.lower() == "q":
+            if low == "q":
                 break
 
-            if cmd.lower() == "r":
+            if low == "r":
                 page.reload(wait_until="domcontentloaded")
                 session.wait_until_stable()
                 continue
 
-            if cmd.lower() == "adapters":
-                for info in AdapterRegistry.available():
-                    print(f"- {info['name']} (priorité {info['priority']})")
+            if low == "list":
+                session.go_to_exercise_list()
+                print(f"Liste ouverte : {page.url}")
+                continue
+
+            if low == "launch":
+                if launcher.launch_first_available():
+                    print(f"Exercice lancé : {page.url}")
+                    result = flow.advance_until_question()
+                    print(
+                        f"Progression automatique : "
+                        f"{result['state']} ({result['steps']} étape(s))"
+                    )
+                else:
+                    print("Aucun vrai exercice détecté/lancé.")
+                continue
+
+            if low == "advance":
+                result = flow.advance_until_question()
+                print(
+                    f"Progression automatique : "
+                    f"{result['state']} ({result['steps']} étape(s))"
+                )
+                continue
+
+            if low == "blocks":
+                blocks = launcher.describe_blocks()
+                print(f"\n{len(blocks)} bloc(s) candidat(s) :")
+                for block in blocks:
+                    print(
+                        f"{block['index']}. "
+                        f"{'[visible]' if block['visible'] else '[caché]'} "
+                        f"{'[checkpoint] ' if block.get('checkpoint') else ''}"
+                        f"{block['text'][:220]}"
+                    )
+                continue
+
+            if low == "menus":
+                menus = launcher.describe_menus()
+                print(f"\n{len(menus)} menu(s) de contenu :")
+                for menu in menus:
+                    print(
+                        f"{menu['index']}. "
+                        f"{'[visible]' if menu['visible'] else '[caché]'} "
+                        f"{'[ouvert] ' if menu.get('expanded') else '[fermé] '}"
+                        f"{menu['text'][:220]}"
+                    )
+                continue
+
+            if low == "active":
+                active = launcher._expanded_menu()
+                if active is None:
+                    print("Aucun menu de contenu ouvert.")
+                else:
+                    try:
+                        text = active.inner_text().strip()
+                    except Exception:
+                        text = ""
+                    print(f"Menu ouvert : {text[:500]}")
                 continue
 
             adapter = registry.detect()
 
             if not adapter:
-                print("Aucun adaptateur disponible.")
+                print("Aucun adaptateur.")
                 continue
 
-            if cmd.lower() == "a":
-                analysis = adapter.analyze()
-                save_analysis(page, analysis, DIAGNOSTICS_DIR)
-                print_analysis(page, adapter, analysis)
+            if low == "a":
+                show_analysis(page, adapter)
                 continue
 
-            if cmd.lower() in ("skip", "validate", "next"):
-                if click_common_action(page, cmd.lower()):
-                    session.wait_until_stable()
-                    print(f"Action {cmd.lower()} effectuée.")
-                else:
-                    print("Action non trouvée.")
+            if low in ("validate", "next", "skip"):
+                ok = click_common_action(page, low)
+                print("OK" if ok else f"Aucun bouton {low} actif trouvé.")
+                session.wait_until_stable()
+
+                if ok and low in ("next", "skip"):
+                    result = flow.advance_until_question()
+                    print(
+                        f"Progression automatique : "
+                        f"{result['state']} ({result['steps']} étape(s))"
+                    )
                 continue
 
-            if cmd.lower().startswith("drag "):
-                action = adapter.actions().get("drag")
+            if low.startswith("select "):
+                action = adapter.actions().get("select")
 
                 if not action:
-                    print("L'adaptateur courant ne gère pas le drag.")
+                    print("Cet exercice ne gère pas encore select.")
                     continue
 
                 try:
-                    _, a, b = cmd.split(maxsplit=2)
-                    ok = action(int(a) - 1, int(b) - 1)
+                    index = int(cmd.split()[1]) - 1
+                except Exception:
+                    print("Usage : select 1")
+                    continue
+
+                before = snapshot(page, adapter)
+
+                try:
+                    ok = action(index)
                 except Exception as exc:
                     print(f"Erreur : {exc}")
                     continue
 
-                print("OK" if ok else "Échec")
+                after_adapter = registry.detect()
+                after = snapshot(page, after_adapter)
+
+                print("Clic effectué." if ok else "Échec du clic.")
+
+                changes = diff(before, after)
+
+                if changes:
+                    print("Changements détectés :")
+                    for change in changes:
+                        print(f"- {change}")
+                else:
+                    print("Aucun changement détecté après le clic.")
+
+                if not flow.has_answerable_question():
+                    result = flow.advance_until_question()
+                    print(
+                        f"Progression automatique : "
+                        f"{result['state']} ({result['steps']} étape(s))"
+                    )
+
                 continue
 
-            if cmd.lower().startswith("choose "):
-                action = adapter.actions().get("choose")
+            if low.startswith("fallback "):
+                action = adapter.actions().get("drag_fallback")
 
                 if not action:
-                    print("L'adaptateur courant ne gère pas choose.")
+                    print("Pas de fallback drag pour cet exercice.")
                     continue
 
                 try:
@@ -140,41 +256,7 @@ def main():
                     print(f"Erreur : {exc}")
                     continue
 
-                print("OK" if ok else "Échec")
-                continue
-
-            if cmd.lower().startswith("select "):
-                action = adapter.actions().get("choose_select")
-
-                if not action:
-                    print("L'adaptateur courant ne gère pas select.")
-                    continue
-
-                try:
-                    _, a, b = cmd.split()
-                    ok = action(int(a) - 1, int(b) - 1)
-                except Exception as exc:
-                    print(f"Erreur : {exc}")
-                    continue
-
-                print("OK" if ok else "Échec")
-                continue
-
-            if cmd.lower().startswith("fill "):
-                action = adapter.actions().get("fill")
-
-                if not action:
-                    print("L'adaptateur courant ne gère pas fill.")
-                    continue
-
-                try:
-                    _, index, value = cmd.split(maxsplit=2)
-                    ok = action(int(index) - 1, value)
-                except Exception as exc:
-                    print(f"Erreur : {exc}")
-                    continue
-
-                print("OK" if ok else "Échec")
+                print("Fallback effectué." if ok else "Échec du fallback.")
                 continue
 
             print("Commande inconnue.")
