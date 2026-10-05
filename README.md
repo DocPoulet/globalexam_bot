@@ -1,119 +1,54 @@
-# GlobalExam Bot — v0.5
+# GlobalExam Bot — v0.6
 
-Cette version corrige plusieurs défauts des versions précédentes.
+V0.6 consolide la détection avant de reprendre l'automatisation des exercices.
 
-## Correction principale
+## Changements
 
-L'URL utilisée est désormais :
+- URL : `https://general.global-exam.com/`
+- profil Chromium persistant ;
+- détection de connexion sur la page et dans les iframes ;
+- analyse de la page principale et de tous les iframes accessibles ;
+- extraction des boutons, inputs, labels, rôles ARIA et `data-testid` ;
+- meilleure détection des questions et réponses ;
+- diagnostics JSON + HTML + captures ;
+- sauvegarde du HTML de chaque iframe ;
+- commande `frames` pour afficher les URLs des frames détectés.
 
-```text
-https://general.global-exam.com/
-```
-
-Lorsqu'aucune session n'est active, GlobalExam peut rediriger vers :
-
-```text
-https://auth.global-exam.com/login
-```
-
-## Nouveau système de session
-
-Les anciennes versions utilisaient `storage_state`.
-
-La v0.5 utilise maintenant un **profil Chromium persistant complet** grâce à :
-
-```python
-launch_persistent_context(...)
-```
-
-Cela conserve plus fidèlement :
-
-- cookies ;
-- localStorage ;
-- IndexedDB ;
-- autres données du profil navigateur.
-
-### Première utilisation
-
-1. Lancer `run.bat`.
-2. Se connecter manuellement.
-3. Aller jusqu'à GlobalExam.
-4. Appuyer sur Entrée dans le terminal.
-
-### Utilisations suivantes
-
-Le même profil Chromium est réutilisé automatiquement.
-
-Si GlobalExam conserve la session côté serveur, le compte devrait rester connecté.
-
-### Réinitialisation
-
-Pour effacer le profil :
+## Installation
 
 ```text
-reset_profile.bat
+install.bat
 ```
 
-## Nouveau détecteur
+Puis :
 
-La v0.5 n'utilise plus seulement quelques sélecteurs HTML supposés.
+```text
+run.bat
+```
 
-Elle inspecte jusqu'à 2000 éléments visibles et récupère notamment :
+## Premier lancement
 
-- tag HTML ;
-- texte ;
-- `id` ;
-- classes ;
-- rôle ARIA ;
-- type d'input ;
-- `name` ;
-- placeholder ;
-- aria-label ;
-- data-testid.
+Connecte-toi manuellement. Le profil Chromium est conservé dans `profile/`.
+Lors des lancements suivants, la session est réutilisée si GlobalExam ne l'a pas expirée.
 
-Le bot tente ensuite de déterminer :
+## Test conseillé
 
-- la question probable ;
-- les réponses candidates ;
-- les boutons visibles ;
-- les champs ;
-- le type d'exercice.
+1. Ouvre un vrai exercice.
+2. Tape `frames`.
+3. Tape `a`.
+4. Vérifie le résumé affiché.
 
-## Diagnostics
-
-À chaque commande `a` ou `dump`, la v0.5 génère :
+En cas de mauvaise détection, les fichiers les plus utiles sont :
 
 ```text
 diagnostics/last_page.json
 diagnostics/last_page.html
+diagnostics/last_page.png
+diagnostics/frame_*_*.html
 ```
 
-ainsi qu'une copie horodatée et une capture PNG.
+## Suite prévue
 
-Ces fichiers permettent d'adapter précisément la version suivante à la structure réelle de GlobalExam.
-
-## Commandes
-
-```text
-a     analyser la page
-dump  sauvegarder les diagnostics
-url   afficher l'URL actuelle
-r     recharger la page
-q     quitter
-```
-
-## Ce qu'il faut tester
-
-Le plus important est d'ouvrir un véritable exercice puis d'utiliser :
-
-```text
-a
-```
-
-Si la détection reste incorrecte, le fichier :
-
-```text
-diagnostics/last_page.json
-```
-
-contiendra assez d'informations pour construire des sélecteurs spécifiques à l'interface réellement utilisée.
+La V0.6 sert à identifier correctement la structure réelle des exercices.
+La version suivante pourra remettre la machine à états au-dessus de ce détecteur
+et gérer proprement les différents composants interactifs.

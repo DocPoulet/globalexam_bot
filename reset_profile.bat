@@ -1,14 +1,7 @@
 @echo off
-echo ATTENTION :
-echo ceci supprime la session Chromium locale du bot.
-echo.
+echo ATTENTION : suppression de la session Chromium locale.
 pause
-
-if exist profile (
-    rmdir /s /q profile
-)
-
+if exist profile rmdir /s /q profile
 mkdir profile
-
 echo Profil reinitialise.
 pause

@@ -1,5 +1,4 @@
 from pathlib import Path
-import json
 
 from browser import BrowserSession
 from detector import analyze_page
@@ -16,6 +15,7 @@ def print_summary(result):
     print(f"URL                : {result['url']}")
     print(f"Titre              : {result['title']}")
     print(f"Connexion requise  : {result['login_required']}")
+    print(f"Frames inspectés   : {result['frame_count']}")
     print(f"Type probable      : {result['exercise_type']}")
     print(f"Question probable  : {result['question'] or 'Non détectée'}")
     print(f"Réponses détectées : {len(result['answers'])}")
@@ -25,43 +25,48 @@ def print_summary(result):
     if result["answers"]:
         print("\nRéponses candidates :")
         for i, answer in enumerate(result["answers"][:20], start=1):
-            print(f"{i}. {answer}")
+            print(f"{i}. {answer['text']} [{answer['kind']}]")
 
     if result["buttons"]:
         print("\nBoutons visibles :")
         for button in result["buttons"][:20]:
-            print(f"- {button}")
+            print(f"- {button['text']}")
 
-    print("\nDiagnostics sauvegardés dans le dossier diagnostics/.")
+    print("\nDiagnostics sauvegardés dans diagnostics/.")
 
 
 def main():
     logger = setup_logger()
-    logger.info("Démarrage de GlobalExam Bot v0.5")
+    logger.info("Démarrage de GlobalExam Bot v0.6")
 
     with BrowserSession(PROFILE_DIR, logger) as session:
         page = session.page
         session.open_global_exam()
 
-        print("\n=== GlobalExam Bot v0.5 ===")
-        print("URL corrigée : https://general.global-exam.com/")
-        print("Le navigateur utilise maintenant un profil Chromium persistant complet.\n")
+        print("\n=== GlobalExam Bot v0.6 ===")
+        print("https://general.global-exam.com/")
+        print("Profil Chromium persistant + détection multi-frame.\n")
 
         if session.is_login_required():
-            print("Aucune session valide détectée.")
-            print("Connecte-toi manuellement dans Chromium.")
-            input("Quand tu es connecté et arrivé sur GlobalExam, appuie sur Entrée... ")
-            session.wait_until_stable()
+            print("Connexion nécessaire.")
+            print("Connecte-toi dans la fenêtre Chromium.")
+            input("Une fois connecté, appuie sur Entrée... ")
+            session.wait_for_login()
+
+            if session.is_login_required():
+                print("Attention : le bot pense que la connexion n'est toujours pas terminée.")
+            else:
+                print("Connexion détectée.")
         else:
-            print("Session déjà active : aucune reconnexion nécessaire.")
+            print("Session restaurée automatiquement.")
 
         while True:
             print("\nCommandes :")
-            print("  a    = analyser la page")
-            print("  url  = afficher l'URL actuelle")
-            print("  dump = sauvegarder tous les diagnostics")
-            print("  r    = recharger")
-            print("  q    = quitter")
+            print("  a      analyser + sauvegarder les diagnostics")
+            print("  frames afficher les frames/iframes")
+            print("  url    afficher l'URL")
+            print("  r      recharger")
+            print("  q      quitter")
 
             cmd = input("> ").strip().lower()
 
@@ -72,13 +77,19 @@ def main():
                 print(page.url)
                 continue
 
+            if cmd == "frames":
+                print("\nFrames détectés :")
+                for i, frame in enumerate(page.frames):
+                    print(f"{i}: {frame.url}")
+                continue
+
             if cmd == "r":
                 page.reload(wait_until="domcontentloaded")
                 session.wait_until_stable()
                 print("Page rechargée.")
                 continue
 
-            if cmd in ("a", "dump"):
+            if cmd == "a":
                 result = analyze_page(page)
                 save_diagnostics(page, result, DIAGNOSTICS_DIR)
                 print_summary(result)

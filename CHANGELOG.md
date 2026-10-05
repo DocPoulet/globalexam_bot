@@ -1,28 +1,22 @@
 # Changelog
 
-## v0.5
+## v0.6
 
 ### Corrigé
-
-- URL principale remplacée par `https://general.global-exam.com/`.
-- ancienne persistance `storage_state` remplacée par un profil Chromium persistant.
-- détection de connexion renforcée.
-- analyse du DOM entièrement revue.
+- analyse limitée au document principal ;
+- détection insuffisante des contrôles personnalisés ;
+- détection de connexion limitée à la page principale.
 
 ### Ajouté
+- analyse multi-frame/iframe ;
+- extraction structurée des réponses ;
+- `frame_url` dans les diagnostics ;
+- HTML de chaque iframe dans les diagnostics ;
+- commande `frames` ;
+- meilleure détection des labels et contrôles ARIA.
 
-- profil Chromium complet dans `profile/`;
-- inspection structurée de jusqu'à 2000 éléments visibles ;
-- collecte des classes, IDs, rôles ARIA et data-testid ;
-- classement de plusieurs questions candidates ;
-- détection plus large des réponses ;
-- export HTML complet ;
-- export JSON complet ;
-- capture d'écran de diagnostic ;
-- `reset_profile.bat`.
-
-## v0.4
-
-- session persistante via storage_state ;
-- statistiques ;
-- historique de session.
+## v0.5
+- URL corrigée vers `https://general.global-exam.com/` ;
+- profil Chromium persistant ;
+- diagnostics JSON/HTML/PNG ;
+- analyse générique du DOM.

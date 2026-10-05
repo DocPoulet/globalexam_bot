@@ -1,5 +1,5 @@
 @echo off
-title GlobalExam Bot v0.5
+title GlobalExam Bot v0.6
 
 if not exist venv\Scripts\python.exe (
     echo Le projet n'est pas installe.
