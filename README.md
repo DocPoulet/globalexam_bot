@@ -1,125 +1,119 @@
-# GlobalExam Bot — v0.1
+# GlobalExam Bot — v0.5
 
-Première version du projet d'automatisation web avec Python et Playwright.
+Cette version corrige plusieurs défauts des versions précédentes.
 
-## Objectifs de la v0.1
+## Correction principale
 
-Cette version permet de :
-
-- lancer Chromium automatiquement ;
-- ouvrir GlobalExam ;
-- se connecter manuellement ;
-- conserver la session dans `data/session.json` ;
-- analyser grossièrement la page ouverte ;
-- détecter :
-  - les titres ;
-  - les boutons ;
-  - les champs `input` ;
-  - les boutons radio ;
-  - les cases à cocher ;
-- enregistrer les événements dans `logs/bot.log`.
-
-La v0.1 ne répond pas encore aux exercices automatiquement.
-
----
-
-## Installation Windows
-
-### Méthode simple
-
-Double-cliquer sur :
+L'URL utilisée est désormais :
 
 ```text
-install.bat
+https://general.global-exam.com/
 ```
 
-Le script crée automatiquement un environnement virtuel Python et installe Playwright + Chromium.
-
-### Installation manuelle
-
-```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-playwright install chromium
-```
-
----
-
-## Lancement
-
-Double-cliquer sur :
+Lorsqu'aucune session n'est active, GlobalExam peut rediriger vers :
 
 ```text
-run.bat
+https://auth.global-exam.com/login
 ```
 
-Ou :
+## Nouveau système de session
 
-```bash
-venv\Scripts\activate
-python src/main.py
+Les anciennes versions utilisaient `storage_state`.
+
+La v0.5 utilise maintenant un **profil Chromium persistant complet** grâce à :
+
+```python
+launch_persistent_context(...)
 ```
 
----
+Cela conserve plus fidèlement :
 
-## Première utilisation
+- cookies ;
+- localStorage ;
+- IndexedDB ;
+- autres données du profil navigateur.
 
-1. Le navigateur Chromium s'ouvre.
-2. Connecte-toi à ton compte GlobalExam si nécessaire.
-3. Va sur une page contenant un exercice.
-4. Reviens dans la console.
-5. Appuie sur Entrée.
-6. Le programme affiche les éléments principaux détectés sur la page.
+### Première utilisation
 
-À la fermeture, la session est sauvegardée dans :
+1. Lancer `run.bat`.
+2. Se connecter manuellement.
+3. Aller jusqu'à GlobalExam.
+4. Appuyer sur Entrée dans le terminal.
+
+### Utilisations suivantes
+
+Le même profil Chromium est réutilisé automatiquement.
+
+Si GlobalExam conserve la session côté serveur, le compte devrait rester connecté.
+
+### Réinitialisation
+
+Pour effacer le profil :
 
 ```text
-data/session.json
+reset_profile.bat
 ```
 
-La fois suivante, la connexion peut donc être restaurée automatiquement.
+## Nouveau détecteur
 
----
+La v0.5 n'utilise plus seulement quelques sélecteurs HTML supposés.
 
-## Structure
+Elle inspecte jusqu'à 2000 éléments visibles et récupère notamment :
+
+- tag HTML ;
+- texte ;
+- `id` ;
+- classes ;
+- rôle ARIA ;
+- type d'input ;
+- `name` ;
+- placeholder ;
+- aria-label ;
+- data-testid.
+
+Le bot tente ensuite de déterminer :
+
+- la question probable ;
+- les réponses candidates ;
+- les boutons visibles ;
+- les champs ;
+- le type d'exercice.
+
+## Diagnostics
+
+À chaque commande `a` ou `dump`, la v0.5 génère :
 
 ```text
-globalexam_bot_v0.1/
-├── src/
-│   ├── main.py
-│   ├── browser.py
-│   ├── page_analyzer.py
-│   └── logger.py
-├── data/
-├── logs/
-├── requirements.txt
-├── install.bat
-├── run.bat
-├── .gitignore
-└── README.md
+diagnostics/last_page.json
+diagnostics/last_page.html
 ```
 
----
+ainsi qu'une copie horodatée et une capture PNG.
 
-## Roadmap immédiate
+Ces fichiers permettent d'adapter précisément la version suivante à la structure réelle de GlobalExam.
 
-### v0.2
-Détection plus précise des exercices :
-- question ;
-- réponses ;
-- boutons de validation ;
-- bouton suivant ;
-- type de question.
+## Commandes
 
-### v0.3
-Machine à états et navigation automatique.
+```text
+a     analyser la page
+dump  sauvegarder les diagnostics
+url   afficher l'URL actuelle
+r     recharger la page
+q     quitter
+```
 
-### v0.4
-Moteur de réponses configurable et historique des exercices.
+## Ce qu'il faut tester
 
----
+Le plus important est d'ouvrir un véritable exercice puis d'utiliser :
 
-## Remarque
+```text
+a
+```
 
-Les sélecteurs spécifiques à GlobalExam devront être ajoutés après observation du DOM réel de plusieurs types d'exercices.
+Si la détection reste incorrecte, le fichier :
+
+```text
+diagnostics/last_page.json
+```
+
+contiendra assez d'informations pour construire des sélecteurs spécifiques à l'interface réellement utilisée.

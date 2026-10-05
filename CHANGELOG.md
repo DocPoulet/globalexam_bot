@@ -1,14 +1,28 @@
 # Changelog
 
-## v0.1
+## v0.5
+
+### Corrigé
+
+- URL principale remplacée par `https://general.global-exam.com/`.
+- ancienne persistance `storage_state` remplacée par un profil Chromium persistant.
+- détection de connexion renforcée.
+- analyse du DOM entièrement revue.
 
 ### Ajouté
 
-- lancement automatique de Chromium ;
-- ouverture de GlobalExam ;
-- sauvegarde et restauration de session ;
-- analyse générique du DOM ;
-- détection de boutons, inputs, radios et checkboxes ;
-- logs console et fichier ;
-- scripts Windows `install.bat` et `run.bat` ;
-- documentation de démarrage.
+- profil Chromium complet dans `profile/`;
+- inspection structurée de jusqu'à 2000 éléments visibles ;
+- collecte des classes, IDs, rôles ARIA et data-testid ;
+- classement de plusieurs questions candidates ;
+- détection plus large des réponses ;
+- export HTML complet ;
+- export JSON complet ;
+- capture d'écran de diagnostic ;
+- `reset_profile.bat`.
+
+## v0.4
+
+- session persistante via storage_state ;
+- statistiques ;
+- historique de session.

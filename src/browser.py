@@ -1,62 +1,100 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-GLOBAL_EXAM_URL = "https://global-exam.com/"
+GLOBAL_EXAM_URL = "https://general.global-exam.com/"
+
 
 class BrowserSession:
     """
-    Gère le navigateur Playwright et la persistance de session.
+    Lance Chromium avec un profil utilisateur persistant.
 
-    Entrées :
-        session_file : chemin du fichier JSON de session.
-        logger       : instance de logger.
-
-    Sorties :
-        Fournit un objet page Playwright via self.page.
+    Contrairement à storage_state, un profil persistant conserve
+    beaucoup plus fidèlement l'état du navigateur :
+    cookies, localStorage, IndexedDB et autres données de site.
     """
 
-    def __init__(self, session_file: Path, logger):
-        self.session_file = Path(session_file)
+    def __init__(self, profile_dir: Path, logger):
+        self.profile_dir = Path(profile_dir)
         self.logger = logger
         self.playwright = None
-        self.browser = None
         self.context = None
         self.page = None
 
     def __enter__(self):
+        self.profile_dir.mkdir(parents=True, exist_ok=True)
+
         self.playwright = sync_playwright().start()
 
-        self.browser = self.playwright.chromium.launch(
-            headless=False
+        self.context = self.playwright.chromium.launch_persistent_context(
+            user_data_dir=str(self.profile_dir),
+            headless=False,
+            viewport={"width": 1440, "height": 1000},
+            args=[
+                "--start-maximized",
+            ],
         )
 
-        if self.session_file.exists():
-            self.logger.info("Chargement de la session existante.")
-            self.context = self.browser.new_context(
-                storage_state=str(self.session_file)
-            )
-        else:
-            self.logger.info("Aucune session existante, création d'une nouvelle session.")
-            self.context = self.browser.new_context()
+        pages = self.context.pages
+        self.page = pages[0] if pages else self.context.new_page()
 
-        self.page = self.context.new_page()
         return self
 
-    def open_home(self):
-        self.logger.info("Ouverture de GlobalExam.")
-        self.page.goto(GLOBAL_EXAM_URL, wait_until="domcontentloaded")
+    def open_global_exam(self):
+        self.logger.info("Ouverture de %s", GLOBAL_EXAM_URL)
 
-    def save_session(self):
-        self.session_file.parent.mkdir(parents=True, exist_ok=True)
-        self.context.storage_state(path=str(self.session_file))
-        self.logger.info("Session sauvegardée dans %s", self.session_file)
+        self.page.goto(
+            GLOBAL_EXAM_URL,
+            wait_until="domcontentloaded",
+            timeout=60000,
+        )
+
+        self.wait_until_stable()
+
+    def wait_until_stable(self):
+        try:
+            self.page.wait_for_load_state("domcontentloaded", timeout=15000)
+        except Exception:
+            pass
+
+        try:
+            self.page.wait_for_timeout(1500)
+        except Exception:
+            pass
+
+    def is_login_required(self):
+        """
+        Détection plus robuste d'une page d'authentification.
+        """
+
+        url = self.page.url.lower()
+
+        if "auth.global-exam.com" in url:
+            return True
+
+        markers = (
+            "/login",
+            "/signin",
+            "/sign-in",
+            "/connexion",
+        )
+
+        if any(marker in url for marker in markers):
+            return True
+
+        password = self.page.locator("input[type='password']")
+
+        try:
+            if password.count() > 0 and password.first.is_visible():
+                return True
+        except Exception:
+            pass
+
+        return False
 
     def __exit__(self, exc_type, exc_value, traceback):
         try:
             if self.context:
-                self.save_session()
+                self.context.close()
         finally:
-            if self.browser:
-                self.browser.close()
             if self.playwright:
                 self.playwright.stop()
