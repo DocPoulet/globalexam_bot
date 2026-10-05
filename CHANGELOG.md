@@ -1,15 +1,25 @@
 # Changelog
 
+## v0.7
+
+### Architecture
+- création d'un système d'adaptateurs ;
+- registre automatique d'adaptateurs ;
+- séparation du routage de page et de la détection d'exercice ;
+- séparation des actions communes.
+
+### Adaptateurs
+- `ordering_dragdrop` validé depuis les diagnostics ;
+- `qcm` générique ;
+- `select` générique ;
+- `text_input` générique ;
+- fallback `unknown`.
+
+### Diagnostics analysés
+- accueil GlobalExam ;
+- exercice de classement chronologique ;
+- frames analytics/publicitaires ignorées dans la logique métier.
+
 ## v0.6.1
-
-### Basé sur les diagnostics réels
-- reconnaissance des boutons `.draggable-item` ;
-- ajout du type `ordering_dragdrop` ;
-- distinction entre accueil et vraie activité ;
-- récupération correcte des 3 éléments du classement observé ;
-- actions expérimentales `drag`, `click`, `skip`.
-
-## v0.6
-- détection multi-frame ;
-- diagnostics étendus ;
-- profil Chromium persistant.
+- détection `.draggable-item` ;
+- type `ordering_dragdrop`.

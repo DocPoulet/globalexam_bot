@@ -31,14 +31,16 @@ class BrowserSession:
 
     def open_global_exam(self):
         self.logger.info("Ouverture de %s", GLOBAL_EXAM_URL)
+
         self.page.goto(
             GLOBAL_EXAM_URL,
             wait_until="domcontentloaded",
             timeout=60000,
         )
+
         self.wait_until_stable()
 
-    def wait_until_stable(self, delay_ms=1800):
+    def wait_until_stable(self, delay_ms=1200):
         try:
             self.page.wait_for_load_state("domcontentloaded", timeout=15000)
         except Exception:
@@ -55,13 +57,10 @@ class BrowserSession:
         if AUTH_HOST in url:
             return True
 
-        if any(marker in url for marker in ("/login", "/signin", "/sign-in", "/connexion")):
-            return True
-
         for frame in self.page.frames:
             try:
-                password = frame.locator("input[type='password']")
-                if password.count() and password.first.is_visible():
+                locator = frame.locator("input[type='password']")
+                if locator.count() and locator.first.is_visible():
                     return True
             except Exception:
                 pass

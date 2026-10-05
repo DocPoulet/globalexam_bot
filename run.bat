@@ -1,5 +1,5 @@
 @echo off
-title GlobalExam Bot v0.6.1
+title GlobalExam Bot v0.7
 if not exist venv\Scripts\python.exe (
     echo Lance install.bat d'abord.
     pause

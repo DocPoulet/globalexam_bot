@@ -1,65 +1,115 @@
-# GlobalExam Bot — v0.6.1
+# GlobalExam Bot — v0.7
 
-Version construite à partir des diagnostics réels récupérés sur GlobalExam.
+La v0.7 remplace le gros détecteur unique par une architecture
+d'adaptateurs spécialisés.
 
-## Ce que les diagnostics ont montré
+## Ce que montrent les diagnostics du dépôt
 
-L'exercice observé utilise :
+Les diagnostics actuellement présents couvrent réellement :
+
+1. l'accueil GlobalExam ;
+2. une activité de classement chronologique.
+
+L'activité observée utilise :
 
 ```text
 button.draggable-item
 ```
 
-pour les éléments à classer.
+Les autres frames observées sont principalement des frames publicitaires,
+analytics ou tracking et ne correspondent pas au contenu pédagogique.
 
-La consigne observée était :
-
-```text
-Organisez les informations dans l'ordre chronologique
-```
-
-La v0.6 classait donc cet exercice en `unknown`, car elle cherchait surtout
-des radios, checkbox, listes et champs texte.
-
-## Nouveautés v0.6.1
-
-- distinction `login / home / activity / other` ;
-- reconnaissance spécifique des URL `/activity/.../content/...` ;
-- détection de `button.draggable-item` ;
-- nouveau type `ordering_dragdrop` ;
-- les éléments draggable apparaissent maintenant comme réponses ;
-- détection de `Passer`, `Valider`, `Suivant`, etc. ;
-- commande expérimentale `drag X Y` ;
-- commande `click X` ;
-- diagnostics plus courts et ciblés.
-
-## Exemple attendu
+## Architecture
 
 ```text
-Page        : activity
-Type        : ordering_dragdrop
-Question    : Organisez les informations dans l'ordre chronologique
-Nb réponses : 3
-
-1. Paul: ... [draggable]
-2. Céline: ... [draggable]
-3. Céline: ... [draggable]
+src/
+├── adapters/
+│   ├── base.py
+│   ├── ordering.py
+│   ├── qcm.py
+│   ├── select.py
+│   ├── text_input.py
+│   └── unknown.py
+├── adapter_registry.py
+├── browser.py
+├── common_actions.py
+├── diagnostics.py
+├── logger.py
+├── main.py
+└── page_router.py
 ```
 
-## Commandes
+## Adaptateurs
+
+### ordering_dragdrop
+
+Validé à partir des diagnostics réels.
+
+Détecte :
 
 ```text
-a          analyser
-drag 1 3   déplacer le premier élément vers le troisième
-click 2    cliquer sur le deuxième élément
-skip       cliquer sur Passer
-r          recharger
-url        URL courante
-q          quitter
+button.draggable-item
 ```
 
-## Suite
+Commandes :
 
-La prochaine étape sera de collecter plusieurs formats d'exercices
-(GlobalExam n'utilise visiblement pas un seul composant) et de créer
-un adaptateur par type d'activité.
+```text
+drag 1 3
+```
+
+### qcm
+
+Préparé pour :
+
+```text
+input[type="radio"]
+input[type="checkbox"]
+```
+
+Commande :
+
+```text
+choose 2
+```
+
+### select
+
+Préparé pour les listes HTML `<select>`.
+
+Commande :
+
+```text
+select 1 3
+```
+
+### text_input
+
+Préparé pour :
+
+```text
+textarea
+input[type="text"]
+```
+
+Commande :
+
+```text
+fill 1 réponse
+```
+
+## Actions communes
+
+```text
+skip
+validate
+next
+```
+
+## Important
+
+Les adaptateurs QCM/select/text sont génériques pour le moment :
+ils devront être ajustés à partir de diagnostics réels de ces types
+d'activités GlobalExam.
+
+Le seul adaptateur actuellement validé avec le DOM réel est
+`ordering_dragdrop`.

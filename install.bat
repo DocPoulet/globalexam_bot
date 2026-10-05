@@ -1,7 +1,7 @@
 @echo off
-title GlobalExam Bot v0.6.1 - Installation
+title GlobalExam Bot v0.7 - Installation
 echo =====================================
-echo     GlobalExam Bot v0.6.1
+echo     GlobalExam Bot v0.7
 echo =====================================
 echo.
 python -m venv venv

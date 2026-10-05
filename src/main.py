@@ -1,54 +1,56 @@
 from pathlib import Path
 
-from actions import ActivityActions
+from adapter_registry import AdapterRegistry
 from browser import BrowserSession
-from detector import analyze_page
-from diagnostics import save_diagnostics
+from common_actions import find_actions, click_common_action
+from diagnostics import save_analysis
 from logger import setup_logger
+from page_router import classify_page
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROFILE_DIR = BASE_DIR / "profile"
 DIAGNOSTICS_DIR = BASE_DIR / "diagnostics"
 
 
-def print_analysis(result):
-    print("\n=== Analyse GlobalExam ===")
-    print(f"Page        : {result['page_kind']}")
-    print(f"URL         : {result['url']}")
-    print(f"Titre       : {result['title']}")
+def print_analysis(page, adapter, analysis):
+    print("\n=== Analyse ===")
+    print(f"Page       : {classify_page(page)}")
+    print(f"Adaptateur : {analysis['adapter']}")
+    print(f"Type       : {analysis['exercise_type']}")
+    print(f"Question   : {analysis.get('question') or 'Non détectée'}")
 
-    if result["page_kind"] != "activity":
-        print("Aucun exercice actif sur cette page.")
-        return
+    answers = analysis.get("answers", [])
+    print(f"Éléments   : {len(answers)}")
 
-    print(f"Type        : {result['exercise_type']}")
-    print(f"Question    : {result['question'] or 'Non détectée'}")
-    print(f"Nb réponses : {len(result['answers'])}")
+    if answers:
+        print("\nContenu détecté :")
 
-    if result["answers"]:
-        print("\nRéponses / éléments :")
-        for i, answer in enumerate(result["answers"], start=1):
-            if answer.get("kind") == "select":
-                print(f"{i}. <liste déroulante>")
+        for i, answer in enumerate(answers, start=1):
+            if "text" in answer:
+                print(f"{i}. {answer['text']}")
+            elif "options" in answer:
+                print(f"{i}. liste avec {len(answer['options'])} options")
             else:
-                print(f"{i}. {answer.get('text', '')} [{answer.get('kind')}]")
+                print(f"{i}. {answer}")
 
-    if result["actions"]:
-        print("\nActions détectées :")
-        for action in result["actions"]:
+    actions = find_actions(page)
+
+    if actions:
+        print("\nActions communes :")
+        for action in actions:
             print(f"- {action['text']} [{action['kind']}]")
 
 
 def main():
     logger = setup_logger()
-    logger.info("Démarrage GlobalExam Bot v0.6.1")
+    logger.info("Démarrage GlobalExam Bot v0.7")
 
     with BrowserSession(PROFILE_DIR, logger) as session:
         page = session.page
         session.open_global_exam()
-        actions = ActivityActions(page)
 
-        print("\n=== GlobalExam Bot v0.6.1 ===")
+        print("\n=== GlobalExam Bot v0.7 ===")
+        print("Architecture par adaptateurs.\n")
 
         if session.is_login_required():
             print("Connexion nécessaire.")
@@ -56,76 +58,123 @@ def main():
             input("> ")
             session.wait_until_stable()
 
+        registry = AdapterRegistry(page)
+
         while True:
             print("\nCommandes :")
-            print("  a                 analyser la page")
-            print("  drag X Y          déplacer l'élément X vers Y")
-            print("  click X           cliquer sur l'élément draggable X")
-            print("  skip              cliquer sur Passer")
-            print("  r                 recharger")
-            print("  url               afficher l'URL")
-            print("  q                 quitter")
+            print("  a                    analyser")
+            print("  adapters             liste des adaptateurs")
+            print("  drag X Y             déplacer un draggable")
+            print("  choose X             sélectionner un choix QCM")
+            print("  select X Y           choisir option Y dans liste X")
+            print("  fill X texte         remplir un champ")
+            print("  skip                 Passer")
+            print("  validate             Valider")
+            print("  next                 Suivant")
+            print("  r                    recharger")
+            print("  q                    quitter")
 
             cmd = input("> ").strip()
 
             if cmd.lower() == "q":
                 break
 
-            if cmd.lower() == "url":
-                print(page.url)
-                continue
-
             if cmd.lower() == "r":
                 page.reload(wait_until="domcontentloaded")
                 session.wait_until_stable()
                 continue
 
+            if cmd.lower() == "adapters":
+                for info in AdapterRegistry.available():
+                    print(f"- {info['name']} (priorité {info['priority']})")
+                continue
+
+            adapter = registry.detect()
+
+            if not adapter:
+                print("Aucun adaptateur disponible.")
+                continue
+
             if cmd.lower() == "a":
-                result = analyze_page(page)
-                save_diagnostics(page, result, DIAGNOSTICS_DIR)
-                print_analysis(result)
+                analysis = adapter.analyze()
+                save_analysis(page, analysis, DIAGNOSTICS_DIR)
+                print_analysis(page, adapter, analysis)
                 continue
 
-            if cmd.lower() == "skip":
-                if actions.click_action("Passer"):
+            if cmd.lower() in ("skip", "validate", "next"):
+                if click_common_action(page, cmd.lower()):
                     session.wait_until_stable()
-                    print("Passer cliqué.")
+                    print(f"Action {cmd.lower()} effectuée.")
                 else:
-                    print("Bouton Passer non trouvé.")
-                continue
-
-            if cmd.lower().startswith("click "):
-                parts = cmd.split()
-
-                try:
-                    index = int(parts[1]) - 1
-                except Exception:
-                    print("Usage : click 1")
-                    continue
-
-                if actions.click_draggable(index):
-                    print("Élément cliqué.")
-                else:
-                    print("Élément introuvable.")
+                    print("Action non trouvée.")
                 continue
 
             if cmd.lower().startswith("drag "):
-                parts = cmd.split()
+                action = adapter.actions().get("drag")
 
-                try:
-                    source = int(parts[1]) - 1
-                    target = int(parts[2]) - 1
-                except Exception:
-                    print("Usage : drag 1 3")
+                if not action:
+                    print("L'adaptateur courant ne gère pas le drag.")
                     continue
 
                 try:
-                    ok = actions.drag_item(source, target)
+                    _, a, b = cmd.split(maxsplit=2)
+                    ok = action(int(a) - 1, int(b) - 1)
                 except Exception as exc:
-                    print(f"Drag impossible : {exc}")
+                    print(f"Erreur : {exc}")
                     continue
 
-                print("Déplacement effectué." if ok else "Indices invalides.")
+                print("OK" if ok else "Échec")
+                continue
+
+            if cmd.lower().startswith("choose "):
+                action = adapter.actions().get("choose")
+
+                if not action:
+                    print("L'adaptateur courant ne gère pas choose.")
+                    continue
+
+                try:
+                    index = int(cmd.split()[1]) - 1
+                    ok = action(index)
+                except Exception as exc:
+                    print(f"Erreur : {exc}")
+                    continue
+
+                print("OK" if ok else "Échec")
+                continue
+
+            if cmd.lower().startswith("select "):
+                action = adapter.actions().get("choose_select")
+
+                if not action:
+                    print("L'adaptateur courant ne gère pas select.")
+                    continue
+
+                try:
+                    _, a, b = cmd.split()
+                    ok = action(int(a) - 1, int(b) - 1)
+                except Exception as exc:
+                    print(f"Erreur : {exc}")
+                    continue
+
+                print("OK" if ok else "Échec")
+                continue
+
+            if cmd.lower().startswith("fill "):
+                action = adapter.actions().get("fill")
+
+                if not action:
+                    print("L'adaptateur courant ne gère pas fill.")
+                    continue
+
+                try:
+                    _, index, value = cmd.split(maxsplit=2)
+                    ok = action(int(index) - 1, value)
+                except Exception as exc:
+                    print(f"Erreur : {exc}")
+                    continue
+
+                print("OK" if ok else "Échec")
                 continue
 
             print("Commande inconnue.")
