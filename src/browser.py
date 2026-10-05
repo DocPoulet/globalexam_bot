@@ -6,7 +6,7 @@ AUTH_HOST = "auth.global-exam.com"
 
 
 class BrowserSession:
-    """Gère un profil Chromium persistant pour conserver la connexion."""
+    """Gère Chromium avec un profil persistant."""
 
     def __init__(self, profile_dir: Path, logger):
         self.profile_dir = Path(profile_dir)
@@ -67,19 +67,6 @@ class BrowserSession:
                 pass
 
         return False
-
-    def wait_for_login(self, timeout_ms=300000):
-        """Attend que l'utilisateur termine une connexion manuelle."""
-        try:
-            self.page.wait_for_url(
-                lambda url: AUTH_HOST not in url.lower(),
-                timeout=timeout_ms,
-            )
-        except Exception:
-            pass
-
-        self.wait_until_stable()
-        return not self.is_login_required()
 
     def __exit__(self, exc_type, exc_value, traceback):
         try:

@@ -1,5 +1,5 @@
 @echo off
-echo ATTENTION : suppression de la session Chromium locale.
+echo Suppression du profil Chromium local...
 pause
 if exist profile rmdir /s /q profile
 mkdir profile

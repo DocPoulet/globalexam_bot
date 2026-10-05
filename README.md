@@ -1,54 +1,65 @@
-# GlobalExam Bot — v0.6
+# GlobalExam Bot — v0.6.1
 
-V0.6 consolide la détection avant de reprendre l'automatisation des exercices.
+Version construite à partir des diagnostics réels récupérés sur GlobalExam.
 
-## Changements
+## Ce que les diagnostics ont montré
 
-- URL : `https://general.global-exam.com/`
-- profil Chromium persistant ;
-- détection de connexion sur la page et dans les iframes ;
-- analyse de la page principale et de tous les iframes accessibles ;
-- extraction des boutons, inputs, labels, rôles ARIA et `data-testid` ;
-- meilleure détection des questions et réponses ;
-- diagnostics JSON + HTML + captures ;
-- sauvegarde du HTML de chaque iframe ;
-- commande `frames` pour afficher les URLs des frames détectés.
-
-## Installation
+L'exercice observé utilise :
 
 ```text
-install.bat
+button.draggable-item
 ```
 
-Puis :
+pour les éléments à classer.
+
+La consigne observée était :
 
 ```text
-run.bat
+Organisez les informations dans l'ordre chronologique
 ```
 
-## Premier lancement
+La v0.6 classait donc cet exercice en `unknown`, car elle cherchait surtout
+des radios, checkbox, listes et champs texte.
 
-Connecte-toi manuellement. Le profil Chromium est conservé dans `profile/`.
-Lors des lancements suivants, la session est réutilisée si GlobalExam ne l'a pas expirée.
+## Nouveautés v0.6.1
 
-## Test conseillé
+- distinction `login / home / activity / other` ;
+- reconnaissance spécifique des URL `/activity/.../content/...` ;
+- détection de `button.draggable-item` ;
+- nouveau type `ordering_dragdrop` ;
+- les éléments draggable apparaissent maintenant comme réponses ;
+- détection de `Passer`, `Valider`, `Suivant`, etc. ;
+- commande expérimentale `drag X Y` ;
+- commande `click X` ;
+- diagnostics plus courts et ciblés.
 
-1. Ouvre un vrai exercice.
-2. Tape `frames`.
-3. Tape `a`.
-4. Vérifie le résumé affiché.
-
-En cas de mauvaise détection, les fichiers les plus utiles sont :
+## Exemple attendu
 
 ```text
-diagnostics/last_page.json
-diagnostics/last_page.html
-diagnostics/last_page.png
-diagnostics/frame_*_*.html
+Page        : activity
+Type        : ordering_dragdrop
+Question    : Organisez les informations dans l'ordre chronologique
+Nb réponses : 3
+
+1. Paul: ... [draggable]
+2. Céline: ... [draggable]
+3. Céline: ... [draggable]
 ```
 
-## Suite prévue
+## Commandes
 
-La V0.6 sert à identifier correctement la structure réelle des exercices.
-La version suivante pourra remettre la machine à états au-dessus de ce détecteur
-et gérer proprement les différents composants interactifs.
+```text
+a          analyser
+drag 1 3   déplacer le premier élément vers le troisième
+click 2    cliquer sur le deuxième élément
+skip       cliquer sur Passer
+r          recharger
+url        URL courante
+q          quitter
+```
+
+## Suite
+
+La prochaine étape sera de collecter plusieurs formats d'exercices
+(GlobalExam n'utilise visiblement pas un seul composant) et de créer
+un adaptateur par type d'activité.
