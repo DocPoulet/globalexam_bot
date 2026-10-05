@@ -1,0 +1,200 @@
+{
+  "url": "https://general.global-exam.com/activity/6755399457093168/content/75929",
+  "title": "Activité",
+  "login_required": false,
+  "frame_count": 10,
+  "exercise_type": "unknown",
+  "question": "Organisez les informations dans l'ordre chronologique",
+  "question_frame": "https://general.global-exam.com/activity/6755399457093168/content/75929",
+  "question_candidates": [
+    {
+      "score": 45,
+      "text": "Organisez les informations dans l'ordre chronologique",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "score": 15,
+      "text": "Paul: I remember trying the javelin during school sports days and I was hopeless, but mainly because I was terrified of hitting someone!",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "score": 15,
+      "text": "Céline: We can go right after we finish watching the javelin event.",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "score": 15,
+      "text": "Céline: I always feel like the participants should be wearing a helmet to protect their heads!",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    }
+  ],
+  "answers": [],
+  "buttons": [
+    {
+      "text": "Faire défiler vers la gauche",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Paul: I remember trying the javelin during school sports days and I was hopeless, but mainly because I was terrified of hitting someone!",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Céline: We can go right after we finish watching the javelin event.",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Céline: I always feel like the participants should be wearing a helmet to protect their heads!",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Faire défiler vers la droite",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Passer",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "text": "Ouvrir le formulaire de retour",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    }
+  ],
+  "inputs": [],
+  "dom_nodes": [
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none border-2 border-transparent text-primary-800 hover:text-primary-700 active:text-primary-900 disabled:text-typeface-600 p-2.5 text-14 leading-4",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "close-button-desktop",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "h2",
+      "text": "Organisez les informations dans l'ordre chronologique",
+      "id": "",
+      "className": "flex w-full self-stretch flex-col items-center justify-center text-balance p-3 text-center",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "grid size-7 shrink-0 place-content-center rounded-8 bg-primary-800 text-white transition-colors hover:bg-primary-700",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "Faire défiler vers la gauche",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "Paul: I remember trying the javelin during school sports days and I was hopeless, but mainly because I was terrified of hitting someone!",
+      "id": "",
+      "className": "draggable-item font-semibold z-10 inline-flex w-fit shrink-0 snap-start snap-always scroll-ml-3 items-center justify-center rounded-8 p-2.5 cursor-pointer sm:shadow-800 outline-hidden border-2 text-left bg-primary-200 text-primary-800 border-primary-800 lg:max-w-45p lg:text-14 2xl:text-16",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "Céline: We can go right after we finish watching the javelin event.",
+      "id": "",
+      "className": "draggable-item font-semibold z-10 inline-flex w-fit shrink-0 snap-start snap-always scroll-ml-3 items-center justify-center rounded-8 p-2.5 cursor-pointer sm:shadow-800 outline-hidden border-2 text-left bg-primary-200 text-primary-800 border-primary-800 lg:max-w-45p lg:text-14 2xl:text-16",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "Céline: I always feel like the participants should be wearing a helmet to protect their heads!",
+      "id": "",
+      "className": "draggable-item font-semibold z-10 inline-flex w-fit shrink-0 snap-start snap-always scroll-ml-3 items-center justify-center rounded-8 p-2.5 cursor-pointer sm:shadow-800 outline-hidden border-2 text-left bg-primary-200 text-primary-800 border-primary-800 lg:max-w-45p lg:text-14 2xl:text-16",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "absolute top-1/2 grid size-7 shrink-0 -translate-y-1/2 place-content-center rounded-8 bg-primary-800 text-white transition-[background-color,transform] hover:bg-primary-700",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "Faire défiler vers la droite",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "Passer",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none bg-background-100 border-2 border-primary-800 hover:border-primary-700 disabled:border-background-800 active:border-primary-900 focus-visible:border-transparent text-primary-800 hover:text-primary-700 active:text-primary-900 disabled:text-typeface-600 px-6 py-2.5 text-16 leading-6",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none bg-primary-800 hover:bg-primary-700 disabled:bg-background-400 active:bg-primary-900 border-transparent text-typeface-reverse-900 disabled:text-typeface-600 p-1.5 text-12 leading-4",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "Ouvrir le formulaire de retour",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/activity/6755399457093168/content/75929"
+    }
+  ]
+}

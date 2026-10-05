@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 profile/
 logs/*.log
-diagnostics/*.json
-diagnostics/*.html
-diagnostics/*.png
+#diagnostics/*.json
+#diagnostics/*.html
+#diagnostics/*.png
 data/session*.json

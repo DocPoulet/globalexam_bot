@@ -1,0 +1,403 @@
+<html><head></head><body><script>var AWIN = AWIN || {};AWIN.Tracking = AWIN.Tracking || {};AWIN.payload = {"advertiser":{"config":{"advertiserId":"65530","campaignId":"27944","pagetype":"generic","accessConfig":{"location":false,"referrer":false,"sale":true,"basket":true,"zxParams":["pagetype","products","category","identifier"]}}},"plugin":{"publisherId":"","advertiserId":25291,"protocol":"https://","zxParams":{"products":[]},"basket":[]}};AWIN.pluginName = "ReachGroup";</script><script>var AWIN = AWIN || {};
+AWIN.iScriptCount = 0;
+
+AWIN.Tracking = (function (pluginName, payload) {
+	var fetchZxParam = function (name) {
+		return payload.plugin.zxParams[name] || null;
+	};
+	var scriptAppend = function (sScriptSrc, sScriptContent, onLoadCallback, oScriptTagParams, tcfVendorId) {
+		// only one of the two can be set
+		if (sScriptSrc && sScriptContent) {
+			return false;
+		}
+
+		// create script node
+		var scriptNode = document.createElement('script');
+		scriptNode.type = 'text/javascript';
+		scriptNode.id = '_aw_script_' + AWIN.iScriptCount++;
+
+		// only add if param was passed
+		if (sScriptSrc) {
+			scriptNode.src = sScriptSrc;
+		} else if (sScriptContent) {
+			scriptNode.text = sScriptContent;
+		}
+
+		// set optional parameters
+		if (oScriptTagParams) {
+			for (var name in oScriptTagParams) {
+				scriptNode[name] = oScriptTagParams[name];
+			}
+		}
+
+		// attach an event handler
+		if (onLoadCallback) {
+			// send Debug EVent when onLoadCallback is not a function. TODO This is temporary change, should be removed after analysis
+			if (typeof onLoadCallback !== 'function') {
+				AWIN.Tracking.sendDebugEvent({
+					severity: 'warning',
+					source: { app: 'AMT', category: 'scriptAppend' },
+					body: {
+						message: 'onLoadCallback is not a function in mastertag-sb.',
+						url: sScriptSrc || 'inline script',
+						advertiserId: AWIN.Tracking.iMerchantId,
+					},
+				});
+			}
+
+			// for IE
+			scriptNode.onreadystatechange = function () {
+				if (scriptNode.readyState == 'complete' || scriptNode.readyState == 'loaded') {
+					onLoadCallback();
+				}
+			};
+
+			// for everything elses
+			scriptNode.onload = onLoadCallback;
+		}
+
+		// append node
+		if (sScriptSrc) {
+			AWIN.Tracking.Consent.getGdprAppends(
+				tcfVendorId,
+				AWIN.Tracking.getQueryParameterDelimiter(scriptNode.src),
+				function (gdprAppends) {
+					scriptNode.src += gdprAppends;
+					AWIN.Tracking.getScriptAppendNode().appendChild(scriptNode);
+				}
+			);
+		} else {
+			AWIN.Tracking.getScriptAppendNode().appendChild(scriptNode);
+		}
+
+		return scriptNode;
+	};
+	var frameAppend = function (sFrameSrc, tcfVendorId) {
+		if (document.getElementsByTagName('body')[0]) {
+			AWIN.Tracking.Consent.getGdprAppends(
+				tcfVendorId,
+				AWIN.Tracking.getQueryParameterDelimiter(sFrameSrc),
+				function (gdprAppends) {
+					sFrameSrc += gdprAppends;
+
+					var iframe = document.createElement('iframe');
+					iframe.setAttribute('aria-hidden', 'true');
+					iframe.src = sFrameSrc;
+					document.getElementsByTagName('body')[0].appendChild(iframe);
+					// AWIN.Tracking.hideElement(iframe); // not needed, iframe is hidden already
+				}
+			);
+		}
+	};
+	var pixelAppend = function (sImageSrc, tcfVendorId) {
+		if (document.getElementsByTagName('body')[0]) {
+			AWIN.Tracking.Consent.getGdprAppends(
+				tcfVendorId,
+				AWIN.Tracking.getQueryParameterDelimiter(sImageSrc),
+				function (gdprAppends) {
+					sImageSrc += gdprAppends;
+
+					var image = document.createElement('img');
+					image.setAttribute('aria-hidden', 'true');
+					image.src = sImageSrc;
+					document.getElementsByTagName('body')[0].appendChild(image);
+					// AWIN.Tracking.hideElement(image); // not needed, iframe is hidden already
+				}
+			);
+		}
+	};
+	var getQueryParameterDelimiter = function (currentUrl) {
+		return currentUrl.indexOf('?') === -1 ? '?' : '&';
+	};
+	var buildQueryString = function (params) {
+		var bits = [];
+		for (var name in params) {
+			if (params.hasOwnProperty(name)) {
+				bits.push(name + '=' + encodeURIComponent(params[name]));
+			}
+		}
+		return bits.join('&');
+	};
+	var getScriptAppendNode = function () {
+		return document.body;
+	};
+	var getBasketData = function () {
+		return payload.plugin.basket || [];
+	};
+	var getAffiliateId = function () {
+		return payload.plugin.publisherId;
+	};
+	var _getAWCValue = function () {
+		return payload.plugin.awc;
+	};
+
+	var Consent = {};
+
+	(function (awinTrackingConsent) {
+		// if we locate the CMP iframe we will reference it with this
+		var cmpFrame;
+
+		(function () {
+			// start here at our window
+			var frame = window;
+
+			// map of calls
+			var cmpCallbacks = {};
+			while (frame) {
+				try {
+					/**
+					 * throws a reference error if no frames exist
+					 */
+					if (frame.frames['__tcfapiLocator']) {
+						cmpFrame = frame;
+						break;
+					}
+				} catch (ignore) {}
+				if (frame === window.top) {
+					break;
+				}
+				frame = frame.parent;
+			}
+
+			/**
+			 * Set up a __tcfapi proxy method to do the postMessage and map the callback.
+			 * From the caller's perspective, this function behaves identically to the
+			 * CMP API's __tcfapi call
+			 */
+			window.__tcfapi = function (cmd, version, callback, arg) {
+				if (!cmpFrame) {
+					callback({ msg: 'CMP not found' }, false);
+				} else {
+					var callId = Math.random() + '';
+					var msg = {
+						__tcfapiCall: {
+							command: cmd,
+							parameter: arg,
+							version: version,
+							callId: callId,
+						},
+					};
+
+					/**
+					 * map the callback for lookup on response
+					 */
+					cmpCallbacks[callId] = callback;
+					cmpFrame.postMessage(msg, '*');
+				}
+			};
+
+			function postMessageHandler(event) {
+				/**
+				 * when we get the return message, call the mapped callback
+				 */
+				var json = {};
+
+				try {
+					/**
+					 * if this isn't valid JSON then this will throw an error
+					 */
+					json = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+				} catch (ignore) {}
+
+				var payload = json.__tcfapiReturn;
+				if (payload) {
+					/**
+					 * messages we care about will have a payload
+					 */
+					if (typeof cmpCallbacks[payload.callId] === 'function') {
+						/**
+						 * call the mapped callback and then remove the reference
+						 */
+
+						cmpCallbacks[payload.callId](payload.returnValue, payload.success);
+						cmpCallbacks[payload.callId] = null;
+					}
+				}
+			}
+			window.addEventListener('message', postMessageHandler, false);
+		})();
+
+		awinTrackingConsent.isCmpPresentOnPage = function () {
+			return typeof cmpFrame !== 'undefined';
+		};
+
+		awinTrackingConsent.getGdprAppends = function (tcfVendorId, delimiter, callback) {
+			if (tcfVendorId) {
+				// prepare for no CMP and errors
+				var fallbackAppend = delimiter + 'gdpr=${GDPR}&gdpr_consent=${GDPR_CONSENT_' + tcfVendorId + '}';
+
+				// cmp found, asking __tcfapi for a consent string for this vendorId
+				if (AWIN.Tracking.Consent.isCmpPresentOnPage()) {
+					try {
+						__tcfapi(
+							'getTCData',
+							2,
+							function (tcData, success) {
+								var appends = delimiter;
+								if (tcData && success) {
+									if (typeof tcData.gdprApplies !== 'undefined') {
+										if (tcData.gdprApplies) {
+											appends += 'gdpr=1';
+										} else {
+											appends += 'gdpr=0';
+										}
+										appends += '&gdpr_consent=' + tcData.tcString;
+										callback(appends);
+										return;
+									}
+								}
+								// no data, no success or missing tcData.gdprApplies
+								callback(fallbackAppend);
+							},
+							[tcfVendorId]
+						);
+					} catch (err) {
+						callback(fallbackAppend);
+					}
+				} else {
+					// no CMP found
+					callback(fallbackAppend);
+				}
+			} else {
+				// no vendorId provided
+				callback('');
+			}
+		};
+	})(Consent);
+
+	var publicObject = {
+		// functions
+		fetchZxParam: fetchZxParam,
+		scriptAppend: scriptAppend,
+		frameAppend: frameAppend,
+		pixelAppend: pixelAppend,
+		getQueryParameterDelimiter: getQueryParameterDelimiter,
+		buildQueryString: buildQueryString,
+		getScriptAppendNode: getScriptAppendNode,
+		getBasketData: getBasketData,
+		getAffiliateId: getAffiliateId,
+		_getAWCValue: _getAWCValue,
+		Consent: Consent,
+
+		// Awin properties
+		Sale: payload.plugin.sale,
+		iMerchantId: payload.plugin.advertiserId, // can be added without configuration
+		sProtocol: payload.plugin.protocol, // can be added without configuration
+
+		// new access property
+		context: {
+			plugin: payload.plugin,
+			advertiser: payload.advertiser,
+			location: payload.plugin.location,
+		},
+	};
+
+	AWIN.sProtocol = payload.plugin.protocol;
+	publicObject[pluginName] = payload.advertiser.config;
+	return publicObject;
+})(AWIN.pluginName, AWIN.payload);
+
+AWIN.Tracking.ReachGroup = AWIN.Tracking.ReachGroup || {};
+AWIN.Tracking.ReachGroup.url = AWIN.Tracking.ReachGroup.url || AWIN.sProtocol + 'hal9000.redintelligence.net/retarget';
+
+(function ($r) {
+	if ($r.terminate === true) {
+		return;
+	}
+
+	if ('undefined' === typeof $r.advertiserId || 'undefined' === typeof $r.campaignId) {
+		return;
+	}
+
+	var pagetype = $r.pagetype || AWIN.Tracking.fetchZxParam('pagetype');
+
+	if (AWIN.Tracking.Sale) {
+		pagetype = 'checkout';
+	} else if ('checkout' === pagetype.toLowerCase()) {
+		AWIN.Tracking.Sale = {};
+	}
+
+	$r.combineProducts = function (products) {
+		if (typeof products === 'string') {
+			products = JSON.parse(products);
+		}
+
+		var output = '';
+		var sep = '';
+
+		for (var i = 0; i < products.length; i++) {
+			output += sep + products[i].identifier + '|' + products[i].quantity;
+			sep = ',';
+		}
+
+		return output;
+	};
+
+	$r.fetchBasketData = function () {
+		var products = AWIN.Tracking.getBasketData();
+		for (var i = 0; i < products.length; i++) {
+			products[i].identifier = products[i].id;
+			delete products[i].id;
+		}
+		return products;
+	};
+
+	var url = $r.url + '?a=' + $r.advertiserId + '&version=1';
+
+	switch (pagetype.toLowerCase()) {
+		case 'basket':
+			url +=
+				'&' +
+				AWIN.Tracking.buildQueryString({
+					event: 'basket',
+					cat: $r.campaignId,
+					items: $r.combineProducts(AWIN.Tracking.fetchZxParam('products') || $r.fetchBasketData()),
+					segment: $r.category || AWIN.Tracking.fetchZxParam('category') || '',
+				});
+			break;
+		case 'category':
+			url +=
+				'&' +
+				AWIN.Tracking.buildQueryString({
+					segment: $r.category || AWIN.Tracking.fetchZxParam('category'),
+				});
+			break;
+		case 'checkout':
+			url +=
+				'&' +
+				AWIN.Tracking.buildQueryString({
+					event: 'transaction',
+					cat: $r.campaignId,
+					items: $r.combineProducts(AWIN.Tracking.fetchZxParam('products') || $r.fetchBasketData()),
+					segment: $r.category || AWIN.Tracking.fetchZxParam('category') || '',
+				});
+			break;
+		case 'search':
+			url +=
+				'&' +
+				AWIN.Tracking.buildQueryString({
+					segment: 'suchergebnisse',
+				});
+			break;
+		case 'product':
+			url +=
+				'&' +
+				AWIN.Tracking.buildQueryString({
+					event: 'view',
+					cat: $r.campaignId,
+					segment: $r.category || AWIN.Tracking.fetchZxParam('category'),
+					items: $r.identifier || AWIN.Tracking.fetchZxParam('identifier'),
+				});
+			break;
+		case 'registration':
+			return;
+		case 'generic':
+		case 'home':
+			break;
+		default:
+			return;
+	}
+
+	AWIN.Tracking.frameAppend(url);
+})(AWIN.Tracking.ReachGroup);
+</script><iframe aria-hidden="true" src="https://hal9000.redintelligence.net/retarget?a=65530&amp;version=1"></iframe></body></html>

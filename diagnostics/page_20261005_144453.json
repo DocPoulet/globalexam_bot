@@ -1,0 +1,754 @@
+{
+  "url": "https://general.global-exam.com/",
+  "title": "Accueil",
+  "login_required": false,
+  "frame_count": 10,
+  "exercise_type": "unknown",
+  "question": "Bienvenue Alexis !",
+  "question_frame": "https://general.global-exam.com/",
+  "question_candidates": [
+    {
+      "score": 45,
+      "text": "Bienvenue Alexis !",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 45,
+      "text": "'One of the most powerful messages she ever made': Princess Diana's 'Revenge Dress' to go up for auction",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 45,
+      "text": "From bottle stoppers to rockets: How Portugal is reinventing cork",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 45,
+      "text": "Céline Dion returns to the stage with emotional Paris comeback show",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 45,
+      "text": "Statistiques globales",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 40,
+      "text": "Vous pensez déjà maîtriser certaines compétences ? Certifiez-vous !",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 40,
+      "text": "Le saviez-vous ?",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 30,
+      "text": "Kiosque",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Mon parcours Avancé B2",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Je m’exprime clairement dans des situations variées",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Je m’exprime clairement dans des situations variées",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Passez votre test de niveau !",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Du 07/10/2025 au 05/10/2026",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Nombre d’activités",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Temps d’activité total",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Score moyen",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Nombre d’activités",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Temps d’activité",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Score moyen",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Mon activité",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "temps total",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "jours à la suite",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Mes certifications",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "score": 15,
+      "text": "Probably one of the most famous cruise ships is 'The Titanic'. It was one of the largest cruise ships ever built but tragically sank on its first voyage.",
+      "frame_url": "https://general.global-exam.com/"
+    }
+  ],
+  "answers": [],
+  "buttons": [
+    {
+      "text": "Anglais",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "General",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "components/top-bar/settings",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "Commencer",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "Du 07/10/2025 au 05/10/2026",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "BUSINESS",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "EXAM",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "text": "Ouvrir le formulaire de retour",
+      "frame_url": "https://general.global-exam.com/"
+    }
+  ],
+  "inputs": [],
+  "dom_nodes": [
+    {
+      "tag": "button",
+      "text": "Anglais",
+      "id": "",
+      "className": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer focus-visible:ring-3 focus-visible:ring-secondary-600 w-full py-5 text-typeface-900 lg:py-3 bg-background-200 hover:bg-background-300",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "General",
+      "id": "",
+      "className": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer focus-visible:ring-3 focus-visible:ring-secondary-600 w-full py-5 bg-general-200 hover:bg-general-300 text-general-900",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer focus-visible:ring-3 focus-visible:ring-secondary-600 hidden text-typeface-900 hover:bg-background-200 lg:flex bg-background-200",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "components/top-bar/settings",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h1",
+      "text": "Bienvenue Alexis !",
+      "id": "",
+      "className": "font-bold text-size-24 mb-6 mt-6 md:mt-10 lg:text-size-26 bg-background",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Mon parcours Avancé B2",
+      "id": "",
+      "className": "font-bold text-size-26 mb-3 lg:text-size-32 lg:mb-4 text-white",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Je m’exprime clairement dans des situations variées",
+      "id": "",
+      "className": "mb-9 lg:text-size-18 text-white",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Je m’exprime clairement dans des situations variées",
+      "id": "",
+      "className": "",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "60%",
+      "id": "",
+      "className": "text-size-12 text-white",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Me tester",
+      "id": "",
+      "className": "font-bold text-size-24 mb-6",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Passez votre test de niveau !",
+      "id": "",
+      "className": "font-semibold text-size-22 hidden lg:block",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "Commencer",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none bg-background-100 border-2 border-primary-800 hover:border-primary-700 disabled:border-background-800 active:border-primary-900 focus-visible:border-transparent text-primary-800 hover:text-primary-700 active:text-primary-900 disabled:text-typeface-600 px-6 py-2.5 text-16 leading-6",
+      "role": "",
+      "type": "outline",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h1",
+      "text": "Kiosque",
+      "id": "",
+      "className": "text-size-24 text-default-90 font-bold",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h1",
+      "text": "'One of the most powerful messages she ever made': Princess Diana's 'Revenge Dress' to go up for auction",
+      "id": "",
+      "className": "flex-1 text-size-14 text-default-90 font-semibold mb-2",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h1",
+      "text": "From bottle stoppers to rockets: How Portugal is reinventing cork",
+      "id": "",
+      "className": "flex-1 text-size-14 text-default-90 font-semibold mb-2",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h1",
+      "text": "Céline Dion returns to the stage with emotional Paris comeback show",
+      "id": "",
+      "className": "flex-1 text-size-14 text-default-90 font-semibold mb-2",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Révisions",
+      "id": "",
+      "className": "font-bold text-size-24 mb-6",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "h2",
+      "text": "Statistiques globales",
+      "id": "",
+      "className": "font-bold text-size-24",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "Du 07/10/2025 au 05/10/2026",
+      "id": "",
+      "className": "button-outline-default-small border-2",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "Anglais",
+      "id": "",
+      "className": "flex w-full items-center justify-between gap-x-2 text-start outline-hidden ring-0 transition-all duration-300 disabled:pointer-events-none group-focus-visible/select:border-secondary-900 group-focus-visible/select:ring-2 group-focus-visible/select:ring-secondary-900 text-typeface-900 bg-background-100 border-primary-500 ring-primary-500 hover:border-primary-700 focus:border-primary-700 aria-expanded:border-primary-700 border-2 rounded-full focus:ring-3 aria-expanded:ring-3 disabled:text-typeface-600 disabled:bg-background-400 disabled:border-background-800 rounded-full px-4 py-[27px] font-medium leading-none focus:border-transparent h-10! py-0! px-5! text-size-14 font-bold leading-none border! border-default-90! text-default-90! hover:border-default-90! focus:border-default-90! aria-expanded:border-default-90! [&_svg]:size-3.5!",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Nombre d’activités",
+      "id": "",
+      "className": "text-center",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Temps d’activité total",
+      "id": "",
+      "className": "text-center",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Score moyen",
+      "id": "",
+      "className": "text-center",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none bg-background-200 hover:bg-primary-200 focus-visible:bg-background-200 disabled:bg-background-700 border-transparent focus-visible:border-primary-200 text-primary-800 hover:text-primary-700 active:text-primary-700 disabled:text-typeface-600 p-1.5 text-12 leading-4",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "BUSINESS",
+      "id": "",
+      "className": "w-[100px] px-2 py-2.5 text-12 font-bold rounded-full leading-4 text-learner-business bg-white shadow-default",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "EXAM",
+      "id": "",
+      "className": "w-[100px] px-2 py-2.5 text-12 font-bold rounded-full leading-4 text-learner-exam bg-white shadow-default",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "GENERAL",
+      "id": "",
+      "className": "w-[100px] px-2 py-2.5 text-12 font-bold rounded-full leading-4 text-learner-general bg-learner-general text-white",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Nombre d’activités",
+      "id": "",
+      "className": "w-[69%] text-center leading-5",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Temps d’activité",
+      "id": "",
+      "className": "w-2/3 text-center leading-5",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Score moyen",
+      "id": "",
+      "className": "w-2/3 text-center leading-5",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Mon activité",
+      "id": "",
+      "className": "font-bold text-size-20",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "41h47",
+      "id": "",
+      "className": "font-bold text-size-20 text-default-90",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "temps total",
+      "id": "",
+      "className": "text-size-12 text-default-90/30 lowercase",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "1",
+      "id": "",
+      "className": "font-bold text-size-20 text-default-90",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "jours à la suite",
+      "id": "",
+      "className": "text-size-12 text-default-90/30 lowercase",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Mes certifications",
+      "id": "",
+      "className": "font-bold text-size-20",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Vous pensez déjà maîtriser certaines compétences ? Certifiez-vous !",
+      "id": "",
+      "className": "font-medium text-default-90/50 leading-loose mb-6",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Le saviez-vous ?",
+      "id": "",
+      "className": "font-bold text-size-20",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "p",
+      "text": "Probably one of the most famous cruise ships is 'The Titanic'. It was one of the largest cruise ships ever built but tragically sank on its first voyage.",
+      "id": "",
+      "className": "font-medium text-default-90/50 leading-loose mb-6",
+      "role": "",
+      "type": "",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "className": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ease-out focus-visible:ring-3 disabled:pointer-events-none bg-primary-800 hover:bg-primary-700 disabled:bg-background-400 active:bg-primary-900 border-transparent text-typeface-reverse-900 disabled:text-typeface-600 p-1.5 text-12 leading-4",
+      "role": "",
+      "type": "button",
+      "name": "",
+      "value": "",
+      "placeholder": "",
+      "ariaLabel": "Ouvrir le formulaire de retour",
+      "dataTestId": "",
+      "forId": "",
+      "frame_url": "https://general.global-exam.com/"
+    }
+  ]
+}
