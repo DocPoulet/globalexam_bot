@@ -1,0 +1,16 @@
+@echo off
+echo Installation de GlobalExam Bot v0.1
+echo.
+
+python -m venv venv
+
+call venv\Scripts\activate
+
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+playwright install chromium
+
+echo.
+echo Installation terminee.
+pause
