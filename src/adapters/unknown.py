@@ -1,4 +1,5 @@
 from .base import ExerciseAdapter
+from dom_utils import extract_question_text
 
 
 class UnknownAdapter(ExerciseAdapter):
@@ -12,6 +13,6 @@ class UnknownAdapter(ExerciseAdapter):
         return {
             "adapter": self.name,
             "exercise_type": "unknown",
-            "question": None,
+            "question": extract_question_text(self.page),
             "answers": [],
         }

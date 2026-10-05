@@ -1,68 +1,137 @@
-# GlobalExam Bot — v0.7.10
+# GlobalExam Bot — v0.9.1
 
-## Progression automatique hors-question
+## CorrectionLearner : mémoire automatique
 
-Cette version ajoute une boucle dédiée aux écrans où il n'y a rien à répondre.
+La V0.9.1 ajoute une mémoire locale persistante autour du `QuestionExtractor`
+de la V0.9.0.
 
-### Résultat / score / fin
+À chaque validation, le bot enregistre automatiquement :
 
-Quand la page indique un résultat, un score ou une fin d'étape :
+- le `question_id` stable ;
+- le type de question et l'adaptateur ;
+- la consigne, le contexte et le paquet de question ;
+- la réponse réellement sélectionnée/saisie ;
+- le texte et les indices DOM visibles sur l'écran de correction ;
+- le résultat : `correct`, `incorrect` ou `unknown` ;
+- la réponse correcte lorsqu'elle peut être démontrée ;
+- l'URL avant/après validation.
 
-1. tentative de `Next` / `Suivant` / `Continuer` ;
-2. sinon tentative de `Skip` / `Passer`.
+Un skip est également journalisé avec le résultat `skipped`.
 
-### Flashcards
+## Base locale
 
-Le bot détecte :
+La mémoire est stockée automatiquement dans :
 
-- `tns-flashcards-prev`
-- `tns-flashcards-next`
+```text
+data/knowledge.sqlite3
+```
 
-comme ID ou classe.
+SQLite est inclus dans Python : aucune dépendance supplémentaire n'est
+nécessaire.
 
-Tant que le bouton Next général n'est pas apparu, il parcourt les flashcards,
-en privilégiant `tns-flashcards-next`.
+Tables principales :
 
-Dès que Next apparaît, il clique dessus.
+```text
+questions
+attempts
+learned_answers
+```
 
-### Tant qu'il n'y a aucune question
+### `questions`
 
-Ordre de traitement :
+Une ligne par `question_id`, avec le paquet sémantique et le nombre de fois où
+la question a été rencontrée.
 
-1. question détectée -> arrêt ;
-2. écran fini/score -> Next ou Skip ;
-3. Next visible -> clic ;
-4. flashcards -> parcours jusqu'à Next ;
-5. Skip visible -> clic ;
-6. sinon arrêt pour éviter de cliquer à l'aveugle.
+### `attempts`
 
-## Automatique
+Une ligne par validation/skip : réponse envoyée, résultat, correction et
+preuves utilisées.
 
-La progression est lancée :
+### `learned_answers`
 
-- juste après l'ouverture d'un exercice ;
-- après un `next` ou `skip` manuel ;
-- après une sélection si la question disparaît.
+Contient seulement les réponses que le bot a pu apprendre avec suffisamment
+de certitude.
 
-## Nouvelle commande
+Une correction ambiguë n'est jamais transformée arbitrairement en bonne
+réponse : elle reste `unknown` et le snapshot de correction est conservé pour
+améliorer le parseur plus tard.
 
-`advance`
+## Apprentissage
 
-Force la progression jusqu'à la prochaine vraie question.
+Si une tentative est explicitement reconnue comme correcte, la réponse donnée
+peut devenir la réponse apprise pour ce `question_id`.
 
-## Commandes principales
+Si une tentative est incorrecte et que le DOM permet d'identifier clairement
+la bonne réponse, celle-ci peut également être mémorisée.
 
-- `launch`
-- `advance`
-- `menus`
-- `active`
-- `blocks`
-- `a`
-- `select X`
-- `fallback X`
-- `validate`
-- `next`
-- `skip`
-- `list`
-- `r`
-- `q`
+Une réponse vide n'est jamais enregistrée comme réponse correcte.
+
+## Types de réponses capturés
+
+- QCM simple/multiple ;
+- boutons et spans ;
+- ordering ;
+- selects ;
+- champs texte ;
+- fallback `unknown`.
+
+Le `QuestionExtractor` améliore aussi la détection de sélection pour les
+boutons/spans via `data-state` et `aria-pressed`.
+
+## Commandes
+
+```text
+packet
+```
+
+Affiche le paquet sémantique courant.
+
+```text
+savepacket
+```
+
+Sauvegarde manuellement un paquet de diagnostic.
+
+```text
+learnstats
+```
+
+Affiche le nombre de questions, tentatives, réponses apprises et les résultats
+observés.
+
+```text
+history 10
+```
+
+Affiche les 10 dernières tentatives mémorisées.
+
+```text
+known
+```
+
+Affiche la réponse déjà apprise pour la question actuellement affichée.
+
+## AutoPilot
+
+La mémoire est branchée directement dans `QuestionEngine`, donc elle fonctionne
+aussi avec AutoQ/AutoPilot : il n'est pas nécessaire d'utiliser les commandes
+manuelles pour remplir la base.
+
+Le flow navigateur et la navigation flashcards de la V0.8.18 sont conservés.
+
+## Suite prévue
+
+V0.9.2 : premier `LLMSolver` pour QCM / button_choice / span_choice, avec ordre
+de priorité :
+
+```text
+réponse déjà apprise
+        ↓ sinon
+LLM
+        ↓
+réponse
+        ↓
+validation
+        ↓
+CorrectionLearner
+```

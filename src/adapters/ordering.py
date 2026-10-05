@@ -1,4 +1,6 @@
 from .base import ExerciseAdapter
+from dom_utils import extract_question_text
+from safety_clicks import safe_click
 
 SOURCE_SELECTOR = '[data-name="exam-answer-container"] button.draggable-item'
 TARGET_SELECTOR = '[data-name="user-answer-container"]'
@@ -6,30 +8,14 @@ TARGET_ITEM_SELECTOR = '[data-name="user-answer-container"] button.draggable-ite
 
 
 class OrderingAdapter(ExerciseAdapter):
-    name = "ordering_click"
-    priority = 100
+    name = "ordering"
+    priority = 120
 
     def matches(self):
         return (
             self.page.locator(SOURCE_SELECTOR).count() > 0
             or self.page.locator(TARGET_SELECTOR).count() > 0
         )
-
-    def _question(self):
-        for selector in ("main h2", "h2", "legend"):
-            locator = self.page.locator(selector)
-
-            for i in range(locator.count()):
-                el = locator.nth(i)
-                try:
-                    if el.is_visible():
-                        text = el.inner_text().strip()
-                        if text:
-                            return text
-                except Exception:
-                    pass
-
-        return None
 
     def _items(self, selector, location):
         result = []
@@ -43,54 +29,70 @@ class OrderingAdapter(ExerciseAdapter):
                     continue
 
                 text = el.inner_text().strip()
-                item_id = el.get_attribute("data-draggable-item-id")
-                state = el.get_attribute("data-state")
             except Exception:
                 continue
 
-            if text:
-                result.append({
-                    "index": i,
-                    "id": item_id,
-                    "text": text,
-                    "state": state,
-                    "location": location,
-                })
+            if not text:
+                continue
+
+            result.append({
+                "index": len(result),
+                "dom_index": i,
+                "id": el.get_attribute("data-draggable-item-id"),
+                "text": text,
+                "state": el.get_attribute("data-state"),
+                "location": location,
+            })
 
         return result
 
     def analyze(self):
-        available = self._items(SOURCE_SELECTOR, "available")
+        answers = self._items(SOURCE_SELECTOR, "available")
         placed = self._items(TARGET_ITEM_SELECTOR, "answer")
 
         return {
             "adapter": self.name,
             "exercise_type": "ordering",
-            "question": self._question(),
-            "answers": available,
+            "question": extract_question_text(self.page),
+            "answers": answers,
             "placed": placed,
-            "remaining": len(available),
+            "remaining": len(answers),
             "placed_count": len(placed),
         }
 
     def select(self, index):
-        locator = self.page.locator(SOURCE_SELECTOR)
+        analysis = self.analyze()
+        answers = analysis["answers"]
 
-        if index < 0 or index >= locator.count():
+        if index < 0 or index >= len(answers):
             return False
 
-        locator.nth(index).click()
+        target = self.page.locator(SOURCE_SELECTOR).nth(
+            answers[index]["dom_index"]
+        )
+
+        if not safe_click(target):
+            return False
+
         self.page.wait_for_timeout(300)
         return True
 
     def drag_fallback(self, index):
-        source = self.page.locator(SOURCE_SELECTOR)
-        target = self.page.locator(TARGET_SELECTOR)
+        analysis = self.analyze()
+        answers = analysis["answers"]
 
-        if index < 0 or index >= source.count() or target.count() == 0:
+        if index < 0 or index >= len(answers):
             return False
 
-        source.nth(index).drag_to(target.first)
+        source = self.page.locator(SOURCE_SELECTOR).nth(
+            answers[index]["dom_index"]
+        )
+        target = self.page.locator(TARGET_SELECTOR)
+
+        if target.count() == 0:
+            return False
+
+        source.drag_to(target.first)
         self.page.wait_for_timeout(300)
         return True
 

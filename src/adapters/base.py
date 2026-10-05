@@ -19,5 +19,11 @@ class ExerciseAdapter(ABC):
     def select(self, index):
         return False
 
+    def choose(self, field_index, option_index):
+        return False
+
+    def fill(self, field_index, text):
+        return False
+
     def actions(self):
         return {}

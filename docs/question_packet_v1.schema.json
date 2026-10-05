@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GlobalExam Question Packet v1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "question_id",
+    "source",
+    "url",
+    "adapter",
+    "exercise_type",
+    "instruction",
+    "context",
+    "source_text",
+    "ui_actions",
+    "answer_contract"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "question_id": {
+      "type": "string"
+    },
+    "source": {
+      "const": "globalexam"
+    },
+    "url": {
+      "type": "string"
+    },
+    "page_title": {
+      "type": "string"
+    },
+    "html_language": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "adapter": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exercise_type": {
+      "type": "string"
+    },
+    "instruction": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "source_text": {
+      "type": "string"
+    },
+    "ui_actions": {
+      "type": "array"
+    },
+    "choices": {
+      "type": "array"
+    },
+    "ordering": {
+      "type": "object"
+    },
+    "fields": {
+      "type": "array"
+    },
+    "raw_answers": {
+      "type": "array"
+    },
+    "answer_contract": {
+      "type": "object"
+    }
+  }
+}

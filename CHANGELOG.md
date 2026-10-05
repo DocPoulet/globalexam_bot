@@ -1,18 +1,22 @@
 # Changelog
 
-## v0.7.10
+## v0.9.1
 
-- ajout de FlowController ;
-- détection résultat / score / fin ;
-- Next ou Skip automatique hors-question ;
-- détection `tns-flashcards-prev` / `tns-flashcards-next` ;
-- parcours automatique des flashcards ;
-- arrêt dès qu'une question réelle est détectée ;
-- commande `advance` ;
-- progression automatique après lancement ;
-- progression automatique après next/skip ;
-- limites de boucle.
+- ajout de `CorrectionLearner` ;
+- base SQLite automatique `data/knowledge.sqlite3` ;
+- sauvegarde automatique de chaque validation ;
+- sauvegarde des réponses données et du snapshot de correction ;
+- résultats `correct`, `incorrect`, `unknown`, `skipped` ;
+- apprentissage d'une réponse seulement lorsqu'elle est suffisamment prouvée ;
+- aucune réponse vide mémorisée comme correcte ;
+- skips journalisés ;
+- support automatique AutoQ/AutoPilot ;
+- amélioration de la détection selected pour button/span choices ;
+- commandes `learnstats`, `history N`, `known` ;
+- fallback ordering routed through `QuestionEngine` pour conserver le contexte de tentative.
 
-## v0.7.9
+## v0.9.0
 
-- lancement par clic sur le bloc ou ses descendants.
+- QuestionExtractor universel ;
+- paquet sémantique stable ;
+- commandes `packet` et `savepacket`.

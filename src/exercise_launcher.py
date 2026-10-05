@@ -1,6 +1,9 @@
 from urllib.parse import urljoin
 import random
+import re
 import unicodedata
+
+from safety_clicks import is_forbidden_element, safe_click
 
 ACTIVITY_MARKERS = ("/activity/", "/activities/")
 
@@ -84,6 +87,58 @@ class ExerciseLauncher:
 
     def _current_is_activity(self):
         return "/activity/" in self.page.url.lower()
+
+    def _current_is_result(self):
+        """
+        Un exercice déjà terminé peut s'ouvrir directement sur son écran
+        de résultat, sans changement d'URL suffisamment distinct pour le
+        lanceur.
+
+        Le marqueur fiable observé est "Votre score".
+        """
+        for selector in ("main", "[role='main']", "body"):
+            try:
+                locator = self.page.locator(selector)
+                if locator.count() == 0:
+                    continue
+
+                text = normalize(locator.first.inner_text())
+                if "votre score" in text:
+                    return True
+            except Exception:
+                pass
+
+        return False
+
+    def _launch_target_reached(self):
+        """
+        Le launcher a terminé son travail dès qu'on est :
+        - sur une URL d'activité ;
+        - ou directement sur un écran résultat "Votre score".
+        """
+        return self._current_is_activity() or self._current_is_result()
+
+    def _quick_launch_click(self, element, force=False):
+        """
+        Clic spécifique au lanceur avec timeout court.
+
+        Le timeout Playwright par défaut (~30 s) était beaucoup trop long :
+        sur une SPA, le clic peut déjà avoir changé d'écran alors que
+        Locator.click() attend encore.
+
+        En cas d'exception, on vérifie donc d'abord si la cible a quand même
+        été atteinte avant de considérer le clic comme raté.
+        """
+        if is_forbidden_element(element):
+            return False
+
+        try:
+            element.click(force=force, timeout=2500)
+            return True
+        except Exception:
+            if self._launch_target_reached():
+                return True
+            return False
 
     def _is_excluded_text(self, text):
         value = normalize(text)
@@ -225,22 +280,24 @@ class ExerciseLauncher:
             if not self._is_visible(control) or self._is_disabled(control):
                 continue
 
-            try:
-                control.click()
+            if is_forbidden_element(control):
+                continue
+
+            if safe_click(control):
                 self.page.wait_for_timeout(500)
 
                 if self._menu_is_expanded(menu):
                     return True
-            except Exception:
-                pass
 
         # Sinon clic direct sur la card.
-        try:
-            menu.click()
-            self.page.wait_for_timeout(500)
-            return self._menu_is_expanded(menu)
-        except Exception:
+        if is_forbidden_element(menu):
             return False
+
+        if not safe_click(menu):
+            return False
+
+        self.page.wait_for_timeout(500)
+        return self._menu_is_expanded(menu)
 
     def choose_active_menu(self):
         """
@@ -366,6 +423,161 @@ class ExerciseLauncher:
     # LANCEMENT D'UN BLOC
     # ---------------------------------------------------------------
 
+    def _click_target_from_text_node(self, node):
+        """
+        Transforme un texte/span/div en vraie cible cliquable si possible.
+        """
+        try:
+            clickable = node.locator(
+                "xpath=ancestor-or-self::*["
+                "self::button or self::a or "
+                "@role='button' or @tabindex='0' or "
+                "contains(@class,'cursor-pointer') or "
+                "@data-action"
+                "][1]"
+            )
+
+            if clickable.count() > 0:
+                target = clickable.first
+            else:
+                target = node
+        except Exception:
+            target = node
+
+        if is_forbidden_element(target):
+            return None
+
+        return target
+
+    def _nearby_start_targets(self, menu, block):
+        """
+        Cherche Commencer/Continuer/etc. dans tout le menu actif puis
+        choisit les CTA les plus proches VISUELLEMENT du bloc exercice.
+
+        Nécessaire car, sur certaines cartes GlobalExam, le CTA "Continuer"
+        est un sibling du bloc mb-10/lg:mb-16 et non son descendant.
+        """
+        try:
+            block_box = block.bounding_box()
+        except Exception:
+            block_box = None
+
+        candidates = []
+        seen = set()
+
+        # Recherche textuelle : permet de trouver aussi les <span>/<div>.
+        for word in START_WORDS:
+            try:
+                matches = menu.get_by_text(word, exact=True)
+            except Exception:
+                continue
+
+            for i in range(matches.count()):
+                node = matches.nth(i)
+
+                try:
+                    if not node.is_visible():
+                        continue
+                except Exception:
+                    continue
+
+                target = self._click_target_from_text_node(node)
+                if target is None:
+                    continue
+
+                try:
+                    text = (
+                        target.inner_text().strip()
+                        or node.inner_text().strip()
+                        or (target.get_attribute("aria-label") or "").strip()
+                    )
+                except Exception:
+                    text = word
+
+                if not text or self._is_excluded_text(text):
+                    continue
+
+                try:
+                    box = target.bounding_box()
+                except Exception:
+                    box = None
+
+                # Distance verticale entre centres.
+                distance = 999999.0
+                if block_box and box:
+                    block_y = block_box["y"] + block_box["height"] / 2
+                    target_y = box["y"] + box["height"] / 2
+                    distance = abs(target_y - block_y)
+
+                # Un CTA à plusieurs écrans de distance ne correspond
+                # vraisemblablement pas à ce bloc.
+                if distance > 700:
+                    continue
+
+                try:
+                    signature = target.evaluate(
+                        """e => [
+                            e.tagName,
+                            e.getAttribute('class') || '',
+                            e.getAttribute('href') || '',
+                            e.getAttribute('role') || '',
+                            e.getAttribute('data-action') || '',
+                            e.getAttribute('data-testid') || '',
+                            (e.innerText || '').trim()
+                        ].join('|')"""
+                    )
+                except Exception:
+                    signature = f"{word}|{i}|{distance}"
+
+                if signature in seen:
+                    continue
+
+                seen.add(signature)
+                candidates.append((distance, target, text))
+
+        # Plus proche en premier.
+        candidates.sort(key=lambda item: item[0])
+        return candidates
+
+    def _try_nearby_start_control(self, menu, block):
+        """
+        Essaie le CTA Commencer/Continuer le plus proche du bloc.
+        """
+        candidates = self._nearby_start_targets(menu, block)
+
+        for distance, target, text in candidates:
+            self.logger.info(
+                "CTA lancement proche détecté : %s | distance=%.1fpx",
+                text[:120],
+                distance,
+            )
+
+            try:
+                target.scroll_into_view_if_needed()
+            except Exception:
+                pass
+
+            if self._quick_launch_click(target):
+                self.page.wait_for_timeout(300)
+
+                if self._launch_target_reached():
+                    self.logger.info(
+                        "CTA proche '%s' a ouvert l'activité/résultat.",
+                        text[:120],
+                    )
+                    return True
+
+                # Certains CTA mettent à jour le DOM avant la navigation.
+                self._wait_after_launch_click()
+
+                if self._launch_target_reached():
+                    return True
+
+            elif self._launch_target_reached():
+                return True
+
+        return False
+
     def _try_activity_link_in_block(self, block):
         links = block.locator("a[href]")
 
@@ -391,8 +603,12 @@ class ExerciseLauncher:
             )
 
             try:
-                link.click()
-                self.page.wait_for_timeout(800)
+                if is_forbidden_element(link) or not self._quick_launch_click(link):
+                    raise RuntimeError("clic refusé")
+                self.page.wait_for_timeout(350)
+
+                if self._launch_target_reached():
+                    return True
             except Exception:
                 try:
                     self.page.goto(
@@ -404,7 +620,7 @@ class ExerciseLauncher:
                 except Exception:
                     continue
 
-            if self._current_is_activity():
+            if self._launch_target_reached():
                 return True
 
         return False
@@ -446,6 +662,50 @@ class ExerciseLauncher:
         return result
 
     def _try_start_control_in_block(self, block):
+        # Recherche textuelle en premier pour supporter :
+        # <span>Continuer</span>, <div>Commencer</div>, etc.
+        for word in START_WORDS:
+            try:
+                matches = block.get_by_text(word, exact=True)
+            except Exception:
+                continue
+
+            for i in range(matches.count()):
+                node = matches.nth(i)
+
+                try:
+                    if not node.is_visible():
+                        continue
+                except Exception:
+                    continue
+
+                target = self._click_target_from_text_node(node)
+                if target is None:
+                    continue
+
+                try:
+                    text = (
+                        target.inner_text().strip()
+                        or node.inner_text().strip()
+                        or word
+                    )
+                except Exception:
+                    text = word
+
+                self.logger.info("Bouton lancement texte : %s", text)
+
+                if self._quick_launch_click(target):
+                    self.page.wait_for_timeout(300)
+
+                    if self._launch_target_reached():
+                        return True
+
+                    if self._try_activity_link_in_block(block):
+                        return True
+                elif self._launch_target_reached():
+                    return True
+
+        # Ancienne détection button/role=button/a conservée en fallback.
         for _, selector, index, text in self._start_controls_in_block(block):
             locator = block.locator(selector).nth(index)
 
@@ -462,13 +722,17 @@ class ExerciseLauncher:
             except Exception:
                 pass
 
-            try:
-                locator.click()
-                self.page.wait_for_timeout(900)
-            except Exception:
+            if is_forbidden_element(locator):
                 continue
 
-            if self._current_is_activity():
+            if not self._quick_launch_click(locator):
+                if self._launch_target_reached():
+                    return True
+                continue
+
+            self.page.wait_for_timeout(350)
+
+            if self._launch_target_reached():
                 return True
 
             if self._try_activity_link_in_block(block):
@@ -487,12 +751,14 @@ class ExerciseLauncher:
         Attend brièvement une navigation ou une mise à jour SPA.
         """
         try:
-            self.page.wait_for_timeout(900)
+            self.page.wait_for_timeout(450)
         except Exception:
             pass
 
+        # Sur une SPA Vue, domcontentloaded peut déjà être passé.
+        # Timeout court uniquement.
         try:
-            self.page.wait_for_load_state("domcontentloaded", timeout=3000)
+            self.page.wait_for_load_state("domcontentloaded", timeout=900)
         except Exception:
             pass
 
@@ -525,6 +791,9 @@ class ExerciseLauncher:
                     if not el.is_visible():
                         continue
                 except Exception:
+                    continue
+
+                if is_forbidden_element(el):
                     continue
 
                 try:
@@ -608,20 +877,34 @@ class ExerciseLauncher:
             except Exception:
                 pass
 
-            try:
-                el.click()
-            except Exception:
+            if is_forbidden_element(el):
                 continue
+
+            before_url = self.page.url
+
+            if not self._quick_launch_click(el):
+                if self._launch_target_reached():
+                    return True
+                continue
+
+            # Vérification immédiate AVANT toute attente longue.
+            self.page.wait_for_timeout(250)
+
+            if self._launch_target_reached():
+                self.logger.info(
+                    "Écran d'activité/résultat atteint après clic interne."
+                )
+                return True
 
             self._wait_after_launch_click()
 
-            if self._current_is_activity():
+            if self._launch_target_reached():
                 return True
 
             # Certains clics ouvrent un détail intermédiaire qui expose ensuite
             # un vrai lien/bouton de lancement.
             if self.page.url != before_url:
-                if self._current_is_activity():
+                if self._launch_target_reached():
                     return True
 
             # Si ce clic a modifié le DOM du bloc, on retente les méthodes précises.
@@ -649,19 +932,32 @@ class ExerciseLauncher:
         except Exception:
             pass
 
-        try:
-            block.click()
-        except Exception:
-            try:
-                # Seulement pour les cas où un élément décoratif intercepte
-                # le clic alors que le bloc lui-même est le composant interactif.
-                block.click(force=True)
-            except Exception:
+        if is_forbidden_element(block):
+            return False
+
+        if not self._quick_launch_click(block):
+            # Seulement pour les cas où un élément décoratif intercepte
+            # le clic alors que le bloc lui-même est le composant interactif.
+            if self._launch_target_reached():
+                return True
+
+            if not self._quick_launch_click(block, force=True):
+                if self._launch_target_reached():
+                    return True
                 return False
+
+        # Vérification immédiate avant le wait de stabilisation.
+        self.page.wait_for_timeout(250)
+
+        if self._launch_target_reached():
+            self.logger.info(
+                "Écran d'activité/résultat atteint après clic bloc."
+            )
+            return True
 
         self._wait_after_launch_click()
 
-        if self._current_is_activity():
+        if self._launch_target_reached():
             return True
 
         after = self._page_state()
@@ -725,7 +1021,7 @@ class ExerciseLauncher:
         - checkpoint uniquement si le menu sélectionné ne contient
           aucun exercice normal.
         """
-        if self._current_is_activity():
+        if self._launch_target_reached():
             return True
 
         menu = self.choose_active_menu()
@@ -745,7 +1041,16 @@ class ExerciseLauncher:
 
         # "Premier exo du menu"
         if normal_blocks:
-            return self._try_block(normal_blocks[0])
+            first_block = normal_blocks[0]
+
+            # IMPORTANT :
+            # sur certaines cartes, le bouton "Continuer" n'est PAS
+            # à l'intérieur du bloc exercice. Il est adjacent dans le menu.
+            # On le cherche donc d'abord par proximité visuelle.
+            if self._try_nearby_start_control(menu, first_block):
+                return True
+
+            return self._try_block(first_block)
 
         # Pas d'exercice normal : checkpoint éventuel du même menu.
         all_blocks = self._exercise_blocks_in_menu(
@@ -763,5 +1068,455 @@ class ExerciseLauncher:
                 "Aucun exercice normal dans ce menu : tentative checkpoint."
             )
             return self._try_block(block)
+
+        return False
+
+
+    # ---------------------------------------------------------------
+    # V0.8.14 — deterministic launcher
+    # ---------------------------------------------------------------
+
+    def is_list_page(self):
+        url = (self.page.url or "").lower()
+        return "/levels/content/" in url
+
+    def _exact_start_nodes(self, scope):
+        """
+        Textes de lancement exacts uniquement.
+        Aucun titre/card générique n'est considéré comme CTA.
+        """
+        result = []
+        seen = set()
+
+        for word in START_WORDS:
+            try:
+                matches = scope.get_by_text(word, exact=True)
+            except Exception:
+                continue
+
+            for i in range(matches.count()):
+                node = matches.nth(i)
+
+                try:
+                    if not node.is_visible():
+                        continue
+                except Exception:
+                    continue
+
+                target = self._click_target_from_text_node(node)
+                if target is None:
+                    continue
+
+                try:
+                    signature = target.evaluate(
+                        """e => [
+                            e.tagName,
+                            e.getAttribute('href') || '',
+                            e.getAttribute('role') || '',
+                            e.getAttribute('data-action') || '',
+                            e.getAttribute('class') || '',
+                            (e.innerText || '').trim()
+                        ].join('|')"""
+                    )
+                except Exception:
+                    signature = f"{word}:{i}"
+
+                if signature in seen:
+                    continue
+
+                seen.add(signature)
+                result.append((target, word))
+
+        return result
+
+    def _structural_start_targets(self, menu, block):
+        """
+        Associe un CTA au bloc par structure DOM avant toute proximité visuelle.
+
+        1. CTA dans le bloc ;
+        2. CTA dans le plus proche parent contenant au maximum un bloc exercice ;
+        3. CTA visuellement proche en dernier recours.
+        """
+        result = []
+        seen = set()
+
+        def add(target, label, source, distance=0.0):
+            try:
+                signature = target.evaluate(
+                    """e => [
+                        e.tagName,
+                        e.getAttribute('href') || '',
+                        e.getAttribute('role') || '',
+                        e.getAttribute('data-action') || '',
+                        e.getAttribute('class') || '',
+                        (e.innerText || '').trim()
+                    ].join('|')"""
+                )
+            except Exception:
+                signature = f"{source}:{label}:{distance}"
+
+            if signature in seen:
+                return
+
+            seen.add(signature)
+            result.append((source, distance, target, label))
+
+        # 1) Descendant exact du bloc.
+        for target, label in self._exact_start_nodes(block):
+            add(target, label, "inside", 0.0)
+
+        # 2) Parents successifs. On refuse un parent englobant plusieurs exos,
+        # car son CTA pourrait appartenir à une autre carte.
+        current = block
+        for depth in range(1, 7):
+            try:
+                parent = current.locator("xpath=..")
+                if parent.count() == 0:
+                    break
+                parent = parent.first
+            except Exception:
+                break
+
+            try:
+                exercise_count = parent.locator(
+                    '[class~="mb-10"][class~="lg:mb-16"]'
+                ).count()
+            except Exception:
+                exercise_count = 99
+
+            if exercise_count <= 1:
+                for target, label in self._exact_start_nodes(parent):
+                    add(target, label, f"ancestor-{depth}", float(depth))
+
+            # Arrête après avoir atteint le menu ou un conteneur trop global.
+            try:
+                cls = parent.get_attribute("class") or ""
+                if all(c in cls.split() for c in MENU_REQUIRED_CLASSES):
+                    break
+            except Exception:
+                pass
+
+            current = parent
+
+        # 3) Proximité géométrique stricte, exact CTA seulement.
+        try:
+            block_box = block.bounding_box()
+        except Exception:
+            block_box = None
+
+        if block_box:
+            bx = block_box["x"] + block_box["width"] / 2
+            by = block_box["y"] + block_box["height"] / 2
+
+            for target, label in self._exact_start_nodes(menu):
+                try:
+                    box = target.bounding_box()
+                except Exception:
+                    box = None
+
+                if not box:
+                    continue
+
+                tx = box["x"] + box["width"] / 2
+                ty = box["y"] + box["height"] / 2
+
+                dx = abs(tx - bx)
+                dy = abs(ty - by)
+
+                # Beaucoup plus strict que l'ancienne limite de 700 px.
+                if dy <= 300 and dx <= 900:
+                    add(target, label, "nearby", dy)
+
+        source_order = {
+            "inside": 0,
+            "ancestor-1": 1,
+            "ancestor-2": 2,
+            "ancestor-3": 3,
+            "ancestor-4": 4,
+            "ancestor-5": 5,
+            "ancestor-6": 6,
+            "nearby": 20,
+        }
+
+        result.sort(
+            key=lambda item: (
+                source_order.get(item[0], 50),
+                item[1],
+            )
+        )
+        return result
+
+    def _try_structural_start_control(self, menu, block):
+        candidates = self._structural_start_targets(menu, block)
+
+        self.logger.info(
+            "Launcher déterministe : %s CTA explicite(s) associé(s) au premier exercice.",
+            len(candidates),
+        )
+
+        for source, distance, target, label in candidates:
+            self.logger.info(
+                "Launcher : essai CTA '%s' source=%s distance=%.1f",
+                label,
+                source,
+                distance,
+            )
+
+            try:
+                target.scroll_into_view_if_needed(timeout=1200)
+            except Exception:
+                pass
+
+            if self._quick_launch_click(target):
+                # Ne jamais enchaîner un autre clic avant de savoir si
+                # l'application a changé d'état.
+                for _ in range(12):
+                    self.page.wait_for_timeout(150)
+
+                    if self._launch_target_reached():
+                        self.logger.info(
+                            "Launcher : CTA '%s' -> activité/résultat atteint.",
+                            label,
+                        )
+                        return True
+
+                    # Une URL d'activité est le signal le plus fiable.
+                    if self._current_is_activity():
+                        return True
+
+            if self._launch_target_reached():
+                return True
+
+        return False
+
+    def _block_title_text(self, block):
+        """
+        Extrait le titre humain du bloc exercice.
+
+        On ignore les compteurs numériques/progression afin de garder
+        par exemple "Ready, Set, Go!" dans :
+            4
+            10
+            Ready, Set, Go!
+        """
+        raw = self._text(block)
+        lines = [
+            line.strip()
+            for line in (raw or "").splitlines()
+            if line.strip()
+        ]
+
+        for line in lines:
+            normalized = normalize(line)
+
+            if not normalized:
+                continue
+
+            if self._is_excluded_text(line):
+                continue
+
+            # Compteurs purs : 4, 10, 4/10, 10/12, etc.
+            if re.fullmatch(r"\d+", normalized):
+                continue
+
+            if re.fullmatch(r"\d+\s*/\s*\d+", normalized):
+                continue
+
+            if "activites terminees" in normalized:
+                continue
+
+            if normalized in ("termine", "terminee"):
+                continue
+
+            return line
+
+        return lines[-1] if lines else ""
+
+    def _try_title_activation(self, block):
+        """
+        Fallback déterministe utilisé seulement si aucun CTA explicite
+        n'existe.
+
+        On clique uniquement le titre exact du PREMIER bloc exercice.
+        C'est le comportement qui ouvrait effectivement l'activité dans
+        les versions précédentes.
+
+        Aucun clic sur toute la carte.
+        """
+        title = self._block_title_text(block)
+
+        if not title:
+            self.logger.info(
+                "Launcher : aucun titre exploitable dans le premier bloc."
+            )
+            return False
+
+        self.logger.info(
+            "Launcher : fallback titre exact '%s'.",
+            title,
+        )
+
+        try:
+            matches = block.get_by_text(title, exact=True)
+        except Exception:
+            matches = None
+
+        if matches is None or matches.count() == 0:
+            self.logger.info(
+                "Launcher : texte exact du titre introuvable dans le bloc."
+            )
+            return False
+
+        seen = set()
+
+        for i in range(matches.count()):
+            node = matches.nth(i)
+
+            try:
+                if not node.is_visible():
+                    continue
+            except Exception:
+                continue
+
+            target = self._click_target_from_text_node(node)
+            if target is None:
+                continue
+
+            try:
+                signature = target.evaluate(
+                    """e => [
+                        e.tagName,
+                        e.getAttribute('href') || '',
+                        e.getAttribute('role') || '',
+                        e.getAttribute('tabindex') || '',
+                        e.getAttribute('class') || '',
+                        (e.innerText || '').trim()
+                    ].join('|')"""
+                )
+            except Exception:
+                signature = f"{title}:{i}"
+
+            if signature in seen:
+                continue
+            seen.add(signature)
+
+            self.logger.info(
+                "Launcher : clic contrôlé sur le titre '%s'.",
+                title,
+            )
+
+            try:
+                target.scroll_into_view_if_needed(timeout=1200)
+            except Exception:
+                pass
+
+            before_url = self.page.url
+
+            if not self._quick_launch_click(target):
+                if self._launch_target_reached():
+                    return True
+                continue
+
+            # Vérifie rapidement si le clic a réellement lancé l'activité.
+            for _ in range(15):
+                self.page.wait_for_timeout(150)
+
+                if self._launch_target_reached():
+                    self.logger.info(
+                        "Launcher : titre '%s' -> activité/résultat atteint.",
+                        title,
+                    )
+                    return True
+
+                if self.page.url != before_url:
+                    if self._launch_target_reached():
+                        return True
+
+            # Le clic sur le titre peut seulement révéler "Continuer".
+            # Le caller refera alors immédiatement un scan CTA.
+            self.logger.info(
+                "Launcher : clic titre sans navigation ; nouveau scan CTA."
+            )
+
+        return False
+
+    def launch_first_available(self):
+        """
+        V0.8.15 : lancement déterministe avec fallback titre contrôlé.
+
+        Ordre :
+        1. lien /activity/ explicite ;
+        2. CTA Commencer/Continuer/... ;
+        3. titre exact du premier exercice ;
+        4. nouveau scan CTA, car le clic titre peut révéler Continuer.
+
+        Jamais de clic sur toute la carte.
+        """
+        if self._launch_target_reached():
+            return True
+
+        menu = self.choose_active_menu()
+
+        if menu is None:
+            self.logger.info("Launcher : aucun menu actif.")
+            return False
+
+        normal_blocks = self._exercise_blocks_in_menu(
+            menu,
+            include_checkpoint=False,
+        )
+
+        self.logger.info(
+            "%s exercice(s) normal(aux) dans le menu actif.",
+            len(normal_blocks),
+        )
+
+        if normal_blocks:
+            block = normal_blocks[0]
+
+            # 1) Lien d'activité explicite.
+            if self._try_activity_link_in_block(block):
+                return True
+
+            # 2) CTA explicite.
+            if self._try_structural_start_control(menu, block):
+                return True
+
+            # 3) Aucun CTA : clic contrôlé sur le TITRE exact.
+            if self._try_title_activation(block):
+                return True
+
+            # 4) Le clic titre peut avoir fait apparaître Continuer.
+            self.page.wait_for_timeout(250)
+
+            if self._try_structural_start_control(menu, block):
+                return True
+
+            self.logger.info(
+                "Launcher : impossible de lancer le premier exercice '%s'.",
+                self._block_title_text(block) or self._text(block)[:120],
+            )
+            return False
+
+        # Checkpoint seulement si aucun exercice normal.
+        all_blocks = self._exercise_blocks_in_menu(
+            menu,
+            include_checkpoint=True,
+        )
+
+        for block in all_blocks:
+            text = self._text(block)
+
+            if not self._is_checkpoint_text(text):
+                continue
+
+            if self._try_activity_link_in_block(block):
+                return True
+
+            if self._try_structural_start_control(menu, block):
+                return True
+
+            if self._try_title_activation(block):
+                return True
 
         return False

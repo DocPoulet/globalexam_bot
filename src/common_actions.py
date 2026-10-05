@@ -1,3 +1,6 @@
+from safety_clicks import is_forbidden_element, safe_click
+
+
 ACTION_WORDS = {
     "skip": ("passer", "skip"),
     "validate": (
@@ -20,13 +23,16 @@ ACTION_WORDS = {
 
 def find_actions(page):
     actions = []
-    locator = page.locator("button")
+    locator = page.locator("button, [role='button']")
 
     for i in range(locator.count()):
         button = locator.nth(i)
 
         try:
             if not button.is_visible():
+                continue
+
+            if is_forbidden_element(button):
                 continue
 
             text = (
@@ -56,11 +62,18 @@ def find_actions(page):
 
 
 def click_common_action(page, kind):
-    for action in find_actions(page):
+    actions = find_actions(page)
+    locator = page.locator("button, [role='button']")
+
+    for action in actions:
         if action["kind"] != kind or action["disabled"]:
             continue
 
-        page.locator("button").nth(action["index"]).click()
+        target = locator.nth(action["index"])
+
+        if not safe_click(target):
+            continue
+
         page.wait_for_timeout(350)
         return True
 
