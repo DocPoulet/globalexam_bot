@@ -1,0 +1,476 @@
+{
+  "schema": "globalexam_result_review_v1",
+  "source": "result_tabs_only",
+  "note": "Observations de corrections, non assimilées à des réponses apprises.",
+  "overview": {
+    "ok": true,
+    "route": "https://general.global-exam.com/activity/27036357/result",
+    "score": {
+      "earned": 2,
+      "total": 10
+    },
+    "questions": [
+      {
+        "number": 1,
+        "indicator": "correct"
+      },
+      {
+        "number": 2,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 3,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 4,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 5,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 6,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 7,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 8,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 9,
+        "indicator": "correct"
+      },
+      {
+        "number": 10,
+        "indicator": "incorrect"
+      }
+    ],
+    "tabs": [
+      "Vos réponses",
+      "Correction",
+      "Explication"
+    ]
+  },
+  "questions": [
+    {
+      "number": 1,
+      "indicator": "correct",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nBravo !\n\nVous avez renseigné toutes les bonnes réponses.\nI'm Olivia. Nice to meet you! Here, try this coleslaw that I made.\nOh, yes. You know, I was the one who overcame all our problems.\nWell, thanks! Can I have more of the delicious coleslaw that you gave me?\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Bravo !\n\nVous avez renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [
+            "I'm Olivia. Nice to meet you! Here, try this coleslaw that I made.\nOh, yes. You know, I was the one who overcame all our problems.\nWell, thanks! Can I have more of the delicious coleslaw that you gave me?"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les informations dans l'ordre chronologique\nI'm Olivia. Nice to meet you! Here, try this coleslaw that I made.\nOh, yes. You know, I was the one who overcame all our problems.\nWell, thanks! Can I have more of the delicious coleslaw that you gave me?\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les informations dans l'ordre chronologique"
+          ],
+          "answer_zones": [
+            "I'm Olivia. Nice to meet you! Here, try this coleslaw that I made.\nOh, yes. You know, I was the one who overcame all our problems.\nWell, thanks! Can I have more of the delicious coleslaw that you gave me?"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les informations dans l'ordre chronologique\n\n(A) Olivia se présente et donne à Greg de la nourriture faite maison. (B) Greg se vante d'être celui qui a résolu le problème du groupe. (C) Greg demande davantage de nourriture faite maison.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les informations dans l'ordre chronologique"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 2,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nOlivia: This barbecue is for you \nbeer\n heroes. Do you like \nbrave\n ?\nGreg: I'll have one, thanks. I'm Greg!\nOlivia: I'm Olivia. Nice to meet you! Here, try this \ncoleslaw\n that I made.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\nOlivia: This barbecue is for you \nbrave\n heroes. Do you like \nbeer\n ?\nGreg: I'll have one, thanks. I'm Greg!\nOlivia: I'm Olivia. Nice to meet you! Here, try this \ncoleslaw\n that I made.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\n\n(A) Olivia considère les membres de l’équipe marketing comme de courageux héros. (B) Olivia demande si Greg voudrait une boisson alcoolisée. (C) Olivia propose à Greg un type de salade qu’elle a faite.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 3,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nM5-S2-2.jpg\nM5-S2-4.jpg\nM5-S2-3.jpg\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nChoisissez l'image qui correspond à : I must overcome my fear of heights.\nM5-S2-2.jpg\nM5-S2-4.jpg\nM5-S2-3.jpg\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Choisissez l'image qui correspond à : I must overcome my fear of heights."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nChoisissez l'image qui correspond à : I must overcome my fear of heights.\n\n(A) Le politicien essaie de persuader le public de voter pour lui et ses idées. (B) Ils se sont rendus au bar pour boire une boisson alcoolisée avec de la mousse. (C) Il doit réussir à gérer sa peur des endroits situés en hauteur.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Choisissez l'image qui correspond à : I must overcome my fear of heights."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 4,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nOlivia is teaching me to make \nbeer\n , but I don't have any mayonnaise!\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\nOlivia is teaching me to make \ncoleslaw\n , but I don't have any mayonnaise!\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\n\n« Coleslaw » est un type de salade à base de mayonnaise et de chou émincé. « Beer » est une boisson alcoolisée recouverte de mousse, à base de malt et de houblon. « Brave » signifie courageux.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 5,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nbrave\nbeer\novercome\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : In order to face your fear of ghosts, you must be _____________.\nbrave\nbeer\novercome\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Sélectionnez la bonne réponse : In order to face your fear of ghosts, you must be _____________."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : In order to face your fear of ghosts, you must be _____________.\n\n(A) « Brave » est correct. C’est un adjectif qui signifie qu’on est prêt·e à affronter une situation effrayante. (B) Incorrect. « Beer » est une boisson alcoolisée. (C) Incorrect. « To overcome something » signifie gérer avec succès un problème.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Sélectionnez la bonne réponse : In order to face your fear of ghosts, you must be _____________."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 6,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nM\nO\nC\nO\nR\nE\nE\nV\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [
+            "M\nO\nC\nO\nR\nE\nE\nV"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nOrganisez les lettres pour former un mot\nO\nV\nE\nR\nC\nO\nM\nE\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les lettres pour former un mot"
+          ],
+          "answer_zones": [
+            "O\nV\nE\nR\nC\nO\nM\nE"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nOrganisez les lettres pour former un mot\n\nLe mot est « OVERCOME ». Cela signifie réussir à gérer un problème difficile.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les lettres pour former un mot"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 7,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nOlivia was the one \nwhere\n Greg talked to at the park \nwho\n the barbecue was held. Was it her coleslaw or her conversation \nthat\n he enjoyed the most?\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nComplétez le texte en déplaçant les mots manquants\nOlivia was the one \nwho\n Greg talked to at the park \nwhere\n the barbecue was held. Was it her coleslaw or her conversation \nthat\n he enjoyed the most?\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nComplétez le texte en déplaçant les mots manquants\n\n« Who » est utilisé pour définir une personne. « Where » est utilisé pour définir un lieu. « That » est utilisé pour définir un objet.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 8,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nThe house where Olivia lives was robbed three times.\nTry this coleslaw that I made.\nOlivia made the coleslaw, loves cooking.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nUne de ces réponses est incorrecte, indiquez-nous laquelle !\nThe house where Olivia lives was robbed three times.\nTry this coleslaw that I made.\nOlivia made the coleslaw, loves cooking.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Une de ces réponses est incorrecte, indiquez-nous laquelle !"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nUne de ces réponses est incorrecte, indiquez-nous laquelle !\n\n(C) Incorrect. On devrait avoir « Olivia, who made the coleslaw, loves cooking ». Si on supprime la proposition relative, la phrase a encore du sens. (A) Correct. La proposition « where Olivia lives » définit l’antécédent. (B) Correct. La proposition « that I made » définit l’antécédent.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Une de ces réponses est incorrecte, indiquez-nous laquelle !"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 9,
+      "indicator": "correct",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nBravo !\n\nVous avez renseigné toutes les bonnes réponses.\nthat\nwho\nwhat\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Bravo !\n\nVous avez renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : To overcome your problem, you must be a person _____________ always remains positive.\nthat\nwho\nwhat\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Sélectionnez la bonne réponse : To overcome your problem, you must be a person _____________ always remains positive."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : To overcome your problem, you must be a person _____________ always remains positive.\n\n(B) « Who » est correct. Il définit l’antécédent « a person ». (A) Incorrect. « That » définit des objets, pas des personnes. (C) Incorrect. « What » ne s’emploie pas pour les propositions relatives déterminatives.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Sélectionnez la bonne réponse : To overcome your problem, you must be a person _____________ always remains positive."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 10,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nthree\nthe\nrobbed\nI\nwas\nwhere\nlive\nhouse\ntimes\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [
+            "three\nthe\nrobbed\nI\nwas\nwhere\nlive\nhouse\ntimes"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les mots pour former une phrase\nthe\nhouse\nwhere\nI\nlive\nwas\nrobbed\nthree\ntimes\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les mots pour former une phrase"
+          ],
+          "answer_zones": [
+            "the\nhouse\nwhere\nI\nlive\nwas\nrobbed\nthree\ntimes"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/27036357/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nIn Your Honor\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les mots pour former une phrase\n\nUne proposition relative déterminative donne des informations importantes sur l’antécédent. Ici, l’antécédent est « Olivia's house », donc on utilise le mot « where » pour faire le lien avec les informations qui le définissent.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "In Your Honor",
+            "Organisez les mots pour former une phrase"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    }
+  ],
+  "questions_requested": 10,
+  "questions_inspected": 10
+}

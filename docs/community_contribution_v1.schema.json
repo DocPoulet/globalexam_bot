@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/globalexam-bot/community-contribution-v1.schema.json",
+  "title": "GlobalExam Bot community fingerprint preview V1 (offline only)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "platform", "privacy", "network_upload", "records"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "platform": {"const": "globalexam"},
+    "privacy": {"const": "hashed_metadata_preview"},
+    "network_upload": {"const": false},
+    "records": {
+      "type": "array", "maxItems": 10000,
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "record": {
+      "type": "object", "additionalProperties": false,
+      "required": ["question_fingerprint", "exercise_type", "answer", "evidence_category", "record_fingerprint"],
+      "properties": {
+        "question_fingerprint": {"$ref": "#/$defs/sha256"},
+        "exercise_type": {"enum": ["qcm_single", "qcm_multiple", "button_choice", "span_choice", "ordering", "select"]},
+        "evidence_category": {"enum": ["selected_data_state_correct", "dom_correct_markers", "labelled_correct_answer"]},
+        "record_fingerprint": {"$ref": "#/$defs/sha256"},
+        "answer": {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "values"],
+          "properties": {
+            "kind": {"enum": ["choice_keys", "ordered_item_keys", "field_option_keys"]},
+            "values": {
+              "type": "array", "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

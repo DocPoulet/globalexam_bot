@@ -1,0 +1,30 @@
+Écran : ouverture_activite_non_confirmee
+Route : https://general.global-exam.com/levels/content
+Détection : {'kind': 'catalog', 'confidence': 0.99, 'evidence': ['route parcours']}
+Contrôles : 21
+Conteneurs : 25
+
+Titres :
+
+Contrôles visibles :
+- <button> role= type=button name= testid= label=Anglais
+- <button> role= type=button name= testid= label=General
+- <button> role= type=button name= testid= label=components/top-bar/settings
+- <div> role=button type= name= testid= label=Sélectionner un module du parcours
+- <button> role= type=button name= testid= label=MODULE 1 Winner takes it all 11 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 2 Going to paradise... or not? 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 3 Time flies when you're having fun 11 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 4 The humiliated shall be exalted 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 5 It's Water Under The Bridge We can laugh about it now · 5 / 12 activités
+- <button> role= type=button name= testid= label=Palier À PASSER
+- <button> role= type=button name= testid= label=MODULE 6 What's New? 5 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 7 Life Admin! 5 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 8 Holidays and Houses 5 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 9 Back to the grind 5 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 10 Shall I bring anything? 5 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 11 Go Green! 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 12 Too Warm 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 13 It's time for the Olympics! 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 14 I'm An Innovator! 12 / 12 activités
+- <button> role= type=button name= testid= label=MODULE 15 A Trip Down Memory Lane... 5 / 12 activités
+- <button> role= type=button name= testid= label=Ouvrir le formulaire de retour

@@ -1,0 +1,26 @@
+Écran : apres_introduction
+Route : https://general.global-exam.com/activity/4503599685050605/content/53482
+Détection : {'kind': 'exercise', 'confidence': 0.98, 'evidence': ['route exercice']}
+Contrôles : 17
+Conteneurs : 1
+
+Titres :
+
+Contrôles visibles :
+- <button> role= type=button name= testid= label=Quitter
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=
+- <button> role= type=button name= testid= label=Carousel Page 1 (Current Slide)
+- <button> role= type=button name= testid= label=Carousel Page 2
+- <button> role= type=button name= testid= label=Carousel Page 3
+- <button> role= type=button name= testid= label=Carousel Page 4
+- <button> role= type=button name= testid= label=Carousel Page 5
+- <button> role= type=button name= testid= label=Carousel Page 6
+- <button> role= type=button name= testid= label=Suivant
+- <button> role= type=button name= testid= label=Ouvrir le formulaire de retour

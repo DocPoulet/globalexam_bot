@@ -1,137 +1,35 @@
-# GlobalExam Bot — v0.9.1
+# GlobalExam Bot v0.10.15 — Préparation Railway
 
-## CorrectionLearner : mémoire automatique
+**Nouveau :** le serveur FastAPI peut être configuré sur Railway avec une base PostgreSQL privée. Le Dockerfile écoute maintenant `$PORT`, le contrôle `/healthz` teste réellement PostgreSQL et une migration SQL idempotente s'exécute en *pre-deploy* (commande documentée).
 
-La V0.9.1 ajoute une mémoire locale persistante autour du `QuestionExtractor`
-de la V0.9.0.
+**[Guide Railway](docs/DEPLOIEMENT_RAILWAY_01015.md)** : étapes de déploiement, variables, migration, santé, vérification et sécurité.
 
-À chaque validation, le bot enregistre automatiquement :
+**Ce qui ne change pas :** AutoPilot, nouveau catalogue V2, LLM GGUF et SQLite locaux. Aucun partage automatique, aucune base ou compte Railway créés, et `COMMUNITY_WRITES_ENABLED=false`.
 
-- le `question_id` stable ;
-- le type de question et l'adaptateur ;
-- la consigne, le contexte et le paquet de question ;
-- la réponse réellement sélectionnée/saisie ;
-- le texte et les indices DOM visibles sur l'écran de correction ;
-- le résultat : `correct`, `incorrect` ou `unknown` ;
-- la réponse correcte lorsqu'elle peut être démontrée ;
-- l'URL avant/après validation.
+Pour utiliser le bot : `run_auto.bat`. En changeant de version, conserver `profile/`, `data/` et `models/`.
 
-Un skip est également journalisé avec le résultat `skipped`.
+---
 
-## Base locale
+Conserve intégralement la V0.10.13 : catalogue V2, AutoPilot, GGUF local et SQLite.
 
-La mémoire est stockée automatiquement dans :
+**Nouveau :** serveur expérimental FastAPI + PostgreSQL dans `server/`. Il accepte uniquement des empreintes V1 validées, jamais le HTML, le texte brut, les identifiants GlobalExam ou les cookies. Aucune contribution n'est envoyée par le bot, et les écritures du serveur sont désactivées par défaut.
 
-```text
-data/knowledge.sqlite3
-```
+Voir **`docs/SERVEUR_COMMUNAUTAIRE_01014.md`** pour le lancement local, les limites de sécurité, les droits à vérifier et les commandes Docker. Il faut créer soi-même les comptes/clé côté serveur : aucune clé administrateur n'est embarquée dans le ZIP.
 
-SQLite est inclus dans Python : aucune dépendance supplémentaire n'est
-nécessaire.
+## Tester le bot classique
 
-Tables principales :
+`run_auto.bat` (inchangé). Conserver `profile/`, `data/`, `models/` lors d'un changement de version.
 
-```text
-questions
-attempts
-learned_answers
-```
+## Prévisualisation locale (sans envoi)
 
-### `questions`
+`community_status.bat` ou `python src/community_cli.py status`.
 
-Une ligne par `question_id`, avec le paquet sémantique et le nombre de fois où
-la question a été rencontrée.
+## Démarrage rapide (Windows + Docker Desktop)
 
-### `attempts`
+Copier `server/.env.example` vers `server/.env`, remplacer `POSTGRES_PASSWORD`, puis double-cliquer `server_start_local.bat`. Une fois démarré, `http://127.0.0.1:8000/healthz` affiche l'état du serveur. La création d'une clé client reste une opération réservée à l'administrateur, documentée dans `docs/SERVEUR_COMMUNAUTAIRE_01014.md`.
 
-Une ligne par validation/skip : réponse envoyée, résultat, correction et
-preuves utilisées.
+## Roadmap actualisée : hébergement Railway (documentaire)
 
-### `learned_answers`
+La production communautaire est désormais prévue sur **Railway** : FastAPI public en HTTPS, PostgreSQL privé, clients avec SQLite et LLM local. Le PC de l'utilisateur **ne sera pas serveur**. Voir `docs/ROADMAP_CLOUD.md` pour les jalons V0.10.15 à V0.10.20.
 
-Contient seulement les réponses que le bot a pu apprendre avec suffisamment
-de certitude.
-
-Une correction ambiguë n'est jamais transformée arbitrairement en bonne
-réponse : elle reste `unknown` et le snapshot de correction est conservé pour
-améliorer le parseur plus tard.
-
-## Apprentissage
-
-Si une tentative est explicitement reconnue comme correcte, la réponse donnée
-peut devenir la réponse apprise pour ce `question_id`.
-
-Si une tentative est incorrecte et que le DOM permet d'identifier clairement
-la bonne réponse, celle-ci peut également être mémorisée.
-
-Une réponse vide n'est jamais enregistrée comme réponse correcte.
-
-## Types de réponses capturés
-
-- QCM simple/multiple ;
-- boutons et spans ;
-- ordering ;
-- selects ;
-- champs texte ;
-- fallback `unknown`.
-
-Le `QuestionExtractor` améliore aussi la détection de sélection pour les
-boutons/spans via `data-state` et `aria-pressed`.
-
-## Commandes
-
-```text
-packet
-```
-
-Affiche le paquet sémantique courant.
-
-```text
-savepacket
-```
-
-Sauvegarde manuellement un paquet de diagnostic.
-
-```text
-learnstats
-```
-
-Affiche le nombre de questions, tentatives, réponses apprises et les résultats
-observés.
-
-```text
-history 10
-```
-
-Affiche les 10 dernières tentatives mémorisées.
-
-```text
-known
-```
-
-Affiche la réponse déjà apprise pour la question actuellement affichée.
-
-## AutoPilot
-
-La mémoire est branchée directement dans `QuestionEngine`, donc elle fonctionne
-aussi avec AutoQ/AutoPilot : il n'est pas nécessaire d'utiliser les commandes
-manuelles pour remplir la base.
-
-Le flow navigateur et la navigation flashcards de la V0.8.18 sont conservés.
-
-## Suite prévue
-
-V0.9.2 : premier `LLMSolver` pour QCM / button_choice / span_choice, avec ordre
-de priorité :
-
-```text
-réponse déjà apprise
-        ↓ sinon
-LLM
-        ↓
-réponse
-        ↓
-validation
-        ↓
-CorrectionLearner
-```
+Cette archive est **la V0.10.14 sans modification fonctionnelle**, complétée uniquement par la roadmap. Rien n'est encore déployé sur Railway et les contributions restent désactivées.

@@ -2,14 +2,18 @@ from pathlib import Path
 import json
 
 from autopilot import AutoPilot
+from answer_engine import AnswerEngine
 from browser import BrowserSession
 from common_actions import click_common_action
 from correction_learner import CorrectionLearner
-from exercise_launcher import ExerciseLauncher
+from site_v2.autopilot_catalog import NewCatalogLauncher
 from flow_controller import FlowController
 from logger import setup_logger
 from question_diagnostics import QuestionDiagnostics
 from question_engine import QuestionEngine
+from llm import build_llm_solver
+from llm_config import load_llm_config
+from site_v2.page_router import initial_page, needs_initial_navigation, kind_from_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROFILE_DIR = BASE_DIR / "profile"
@@ -77,6 +81,7 @@ def print_help():
     print("  learnstats         statistiques de la mémoire locale")
     print("  history N          N dernières tentatives mémorisées")
     print("  known              réponse déjà apprise pour cette question")
+    print("  llmstatus          configuration du moteur LLM")
     print("  select X           sélectionner/clicker la réponse X")
     print("  choose F O         champ select F -> option O")
     print("  fill F TEXTE       remplir le champ texte F")
@@ -162,15 +167,20 @@ def auto_handle_passer_questions(questions, flow, max_questions=50):
 
 def main():
     logger = setup_logger()
-    logger.info("Démarrage GlobalExam Bot v0.9.1")
+    logger.info("Démarrage GlobalExam Bot v0.10.13")
 
     with BrowserSession(PROFILE_DIR, logger) as session:
         page = session.page
 
-        print("\n=== GlobalExam Bot v0.9.1 ===")
+        print("\n=== GlobalExam Bot v0.10.13 ===")
         print("Moteur de questions multi-format.\n")
 
-        session.open_start_page()
+        # Réutilise l'onglet déjà ouvert (catalogue, activité ou résultat),
+        # comme dans le mode guidé V0.10.9.
+        page = initial_page(session.context)
+        session.page = page
+        if needs_initial_navigation(page):
+            session.open_start_page()
 
         if session.is_login_required():
             print("Connexion nécessaire.")
@@ -178,16 +188,40 @@ def main():
             input("> ")
             session.go_to_exercise_list()
 
-        launcher = ExerciseLauncher(page, logger)
+        launcher = NewCatalogLauncher(page, logger)
         flow = FlowController(page, logger)
         diagnostics = QuestionDiagnostics(DIAGNOSTICS_DIR, logger)
         learner = CorrectionLearner(DATA_DIR, logger)
+
+        llm_config = load_llm_config(BASE_DIR, logger)
+        try:
+            llm_solver = build_llm_solver(llm_config, logger)
+        except Exception as exc:
+            logger.info("LLM : configuration impossible : %s", exc)
+            llm_solver = None
+
+        answer_engine = AnswerEngine(
+            learner=learner,
+            llm_solver=llm_solver,
+            logger=logger,
+            min_confidence=llm_config.get("min_confidence", 0.35),
+        )
+
+        logger.info(
+            "LLM : enabled=%s provider=%s model=%s min_confidence=%s",
+            bool(llm_solver),
+            llm_config.get("provider"),
+            llm_config.get("model_path") or llm_config.get("model"),
+            llm_config.get("min_confidence"),
+        )
+
         questions = QuestionEngine(
             page,
             logger,
             diagnostics=diagnostics,
             flow=flow,
             learner=learner,
+            answer_engine=answer_engine,
         )
         autopilot = AutoPilot(
             page,
@@ -197,7 +231,11 @@ def main():
             questions,
         )
 
-        print("Pilote autonome démarré...")
+        print("Pilote autonome V2 prêt. Ancien moteur d'exercices conservé.")
+        print(f"Trace détaillée : {autopilot.audit.path}")
+        print("Le catalogue ouvre uniquement une activité 'En cours / Continuer'.")
+        print("Sur une activité/résultat déjà ouvert, le moteur reprend cet écran.")
+        print("Pour quitter sans lancement, ferme la fenêtre maintenant.")
         auto_result = autopilot.run()
 
         print(
@@ -206,6 +244,8 @@ def main():
         )
         if auto_result.get("diagnostic"):
             print(f"Diagnostic : {auto_result['diagnostic']}")
+        print(f"Trace : {auto_result.get('audit', autopilot.audit.path)}")
+        print(f"Bilan : {auto_result.get('summary', autopilot.audit.summary())}")
         print("Les commandes manuelles restent disponibles pour le debug.")
 
         while True:
@@ -298,6 +338,10 @@ def main():
                 print(f"Questions       : {stats['questions']}")
                 print(f"Tentatives      : {stats['attempts']}")
                 print(f"Réponses apprises : {stats['learned_answers']}")
+                print(f"Vérifiées       : {stats['verified_answers']}")
+                print(f"Anciennes non vérifiées : {stats['legacy_unverified']}")
+                print(f"Suggestions     : {stats['provisional_suggestions']}")
+                print(f"Contradictoires : {stats['disputed_answers']}")
                 print(f"Résultats       : {stats['outcomes']}")
                 print(f"Base            : {stats['database']}")
                 continue
@@ -329,6 +373,15 @@ def main():
                     print("Aucune réponse apprise pour cette question.")
                 else:
                     print(json.dumps(known, ensure_ascii=False, indent=2))
+                continue
+
+            if low == "llmstatus":
+                print("\n=== LLM ===")
+                print(f"Enabled        : {bool(llm_solver)}")
+                print(f"Provider       : {llm_config.get('provider')}")
+                print(f"Model          : {llm_config.get('model')}")
+                print(f"Base URL       : {llm_config.get('base_url')}")
+                print(f"Min confidence : {llm_config.get('min_confidence')}")
                 continue
 
             if low == "menus":

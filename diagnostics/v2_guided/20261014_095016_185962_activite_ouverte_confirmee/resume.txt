@@ -1,0 +1,14 @@
+Écran : activite_ouverte_confirmee
+Route : https://general.global-exam.com/activity/6755399458051388/content/53453
+Détection : {'kind': 'exercise', 'confidence': 0.98, 'evidence': ['route exercice']}
+Contrôles : 4
+Conteneurs : 1
+
+Titres :
+- h2: Introduction
+
+Contrôles visibles :
+- <button> role= type=button name= testid=close-button-desktop label=
+- <button> role= type=button name= testid= label=Zoomer
+- <button> role= type=button name= testid= label=Suivant
+- <button> role= type=button name= testid= label=Ouvrir le formulaire de retour

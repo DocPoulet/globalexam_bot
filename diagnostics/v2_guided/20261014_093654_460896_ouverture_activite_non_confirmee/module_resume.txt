@@ -1,0 +1,43 @@
+Module: 5
+Ouvert: True
+Titre: MODULE 5 It's Water Under The Bridge We can laugh about it now · 5 / 12 activités
+Nœuds inspectés: 184
+Éléments cliquables: 8
+
+Texte des éléments :
+- MODULE 5
+- It's Water Under The Bridge
+- We can laugh about it now · 5 / 12 activités
+- En cours · 0/14
+- Protect And Serve
+- Continuer
+- Terminée · 2/10
+- In Your Honor
+- Terminée · 4/10
+- Getting a 5-Star Treatment
+- Terminée · 3/10
+- Later Alligator
+- See You In a While Crocodile
+- Palier
+- À PASSER
+- À débloquer
+- Real World Calling
+- Double-crossed
+- Tell Us Again!
+- A Drama Story is Always a Better Story
+- All Is Well That Ends Well
+- Validation du module
+- TEST DU MODULE
+- Racontez les rebondissements de votre séjour
+- Partagez avec un proche une semaine de voyage riche en rebondissements
+- Lancer
+
+Contrôles cliquables potentiels :
+- <button> MODULE 5 It's Water Under The Bridge We can laugh about it now · 5 / 12 activités role= class=mb-1.5 mt-[38px] flex cursor-pointer items-center gap-[18px] focus-visible:outline-primary-700
+- <div> En cours · 0/14 Protect And Serve Continuer role= class=relative cursor-pointer
+- <div> Terminée · 2/10 Voir In Your Honor role= class=relative cursor-pointer
+- <div> Terminée · 4/10 Voir Getting a 5-Star Treatment role= class=relative cursor-pointer
+- <div> Terminée · 3/10 Voir Later Alligator role= class=relative cursor-pointer
+- <div> Terminée · 2/10 Voir See You In a While Crocodile role= class=relative cursor-pointer
+- <button> Palier À PASSER role= class=relative flex items-center gap-2.5 whitespace-nowrap rounded-14 bg-white px-4 py-[9px] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary-700
+- <div> Racontez les rebondissements de votre séjour Partagez avec un proche une semaine de voyage riche en rebondissements Lancer role= class=relative cursor-pointer

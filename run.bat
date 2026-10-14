@@ -1,13 +1,5 @@
 @echo off
-title GlobalExam Bot v0.8
-
-if not exist venv\Scripts\python.exe (
-    echo Environnement Python absent.
-    echo Lance install.bat d'abord.
-    pause
-    exit /b 1
-)
-
-call venv\Scripts\activate
-python src\main.py
-pause
+setlocal
+cd /d "%~dp0"
+title GlobalExam Bot v0.10.11 - AutoPilot hybride
+call run_auto.bat

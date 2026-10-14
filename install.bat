@@ -1,7 +1,7 @@
 @echo off
-title GlobalExam Bot v0.8 - Installation
+title GlobalExam Bot v0.10.0 - Installation
 echo =====================================
-echo       GlobalExam Bot v0.8
+echo       GlobalExam Bot v0.10.0
 echo =====================================
 echo.
 

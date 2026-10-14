@@ -1,7 +1,7 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-START_URL = "https://general.global-exam.com/levels/content/22007"
+START_URL = "https://general.global-exam.com/levels/content"
 AUTH_HOST = "auth.global-exam.com"
 
 

@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 from safety_clicks import is_forbidden_element, safe_click
+from site_v2.page_router import kind_from_url
 
 
 RESULT_PHRASES = (
@@ -434,6 +435,9 @@ class FlowController:
         return el is not None
 
     def detect_screen_kind(self):
+        # Le nouveau résultat est identifié d'abord par sa route canonique.
+        if kind_from_url(self.page.url) == "result":
+            return "result"
         if self.looks_finished():
             return "result"
 

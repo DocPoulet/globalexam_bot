@@ -1,0 +1,19 @@
+{
+  "llm": {
+    "enabled": true,
+    "provider": "llama_cpp",
+    "model_path": "models/qwen2.5-7b-instruct-q4_k_m-00001-of-00002.gguf",
+    "temperature": 0.0,
+    "min_confidence": 0.35,
+    "n_ctx": 4096,
+    "n_threads": 0,
+    "n_gpu_layers": 0,
+    "max_tokens": 128,
+    "verbose": false
+  },
+  "community": {
+    "enabled": false,
+    "upload_confirmed_answers": false,
+    "endpoint": null
+  }
+}

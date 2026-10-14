@@ -1,0 +1,239 @@
+{
+  "schema": "globalexam_site_scan_v1",
+  "label": "apres_rejouer",
+  "captured_at": "2026-10-14T10:06:34",
+  "route": "https://general.global-exam.com/activity/4503599685050605/content/53481",
+  "document": {
+    "title": "Activité",
+    "lang": "",
+    "visible_text": "Getting a 5-Star Treatment 0 / 10 Zoomer Introduction Good conversation and great food are bridges to meeting new people and making nice memories. In this lesson, you will learn useful phrases for social situations and how to enhance your conversations. Let’s first look at some phrases you should kn"
+  },
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Introduction"
+    }
+  ],
+  "controls": [
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "",
+      "testid": "close-button-desktop",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Zoomer",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Suivant",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Ouvrir le formulaire de retour",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    }
+  ],
+  "links": [],
+  "containers": [
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "",
+      "testid": "close-button-desktop",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": "",
+      "children": 3
+    }
+  ],
+  "dom_counts": {
+    "elements_scanned": 413,
+    "controls": 4,
+    "containers": 1,
+    "buttons": 4,
+    "password_inputs": 0,
+    "radio_inputs": 0,
+    "checkbox_inputs": 0,
+    "text_inputs": 0,
+    "textareas": 0,
+    "selects": 0,
+    "radiogroups": 0,
+    "draggables": 0,
+    "dropzones": 0
+  },
+  "frames": [
+    {
+      "title": "Activité",
+      "lang": "",
+      "visible_text": "Getting a 5-Star Treatment 0 / 10 Zoomer Introduction Good conversation and great food are bridges to meeting new people and making nice memories. In this lesson, you will learn useful phrases for social situations and how to enhance your conversations. Let’s first look at some phrases you should kn",
+      "headings": [
+        {
+          "level": "h2",
+          "text": "Introduction"
+        }
+      ],
+      "controls": [
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "",
+          "testid": "close-button-desktop",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Zoomer",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Suivant",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Ouvrir le formulaire de retour",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        }
+      ],
+      "links": [],
+      "containers": [
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "",
+          "testid": "close-button-desktop",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": "",
+          "children": 3
+        }
+      ],
+      "dom_counts": {
+        "elements_scanned": 413,
+        "controls": 4,
+        "containers": 1,
+        "buttons": 4,
+        "password_inputs": 0,
+        "radio_inputs": 0,
+        "checkbox_inputs": 0,
+        "text_inputs": 0,
+        "textareas": 0,
+        "selects": 0,
+        "radiogroups": 0,
+        "draggables": 0,
+        "dropzones": 0
+      },
+      "route": "https://general.global-exam.com/activity/4503599685050605/content/53481"
+    },
+    {
+      "route": "",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://hal9000.redintelligence.net/retarget",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://ban.tangooserver.com/rtb/google/cookiematch.aspx",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://ad.ad-srv.net/dsp/retargeting/zyzz06tqudjg/",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://16537892.fls.doubleclick.net/activityi;dc_pre=CNr2iqKFuZcDFZfvUwgdZBkc1A;src=16537892;type=invmedia;cat=dbmis0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=;gdpr_consent=;ord=6978664891440.537",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://11868943.fls.doubleclick.net/activityi;dc_pre=CIfxiaKFuZcDFXQYpggd_3gmyg;src=11868943;type=invmedia;cat=dbmis0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=0;npa=0;gdpr=;gdpr_consent=;ord=6978664891440.537",
+      "access": "external_frame_skipped"
+    }
+  ],
+  "detected": {
+    "kind": "exercise",
+    "confidence": 0.98,
+    "evidence": [
+      "route exercice"
+    ]
+  },
+  "structure_hash": "6d21f8080dcab104"
+}

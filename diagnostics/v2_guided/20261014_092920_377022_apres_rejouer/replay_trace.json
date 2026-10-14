@@ -1,0 +1,10 @@
+{
+  "schema": "globalexam_replay_trace_v1",
+  "clicked": true,
+  "ok": true,
+  "reason": null,
+  "before_route": "https://general.global-exam.com/activity/4503599673099410/result",
+  "after_route": "https://general.global-exam.com/activity/6755399458051388/content/53453",
+  "new_tab": false,
+  "screen_kind": "exercise"
+}

@@ -1,0 +1,440 @@
+{
+  "schema": "globalexam_result_review_v1",
+  "source": "result_tabs_only",
+  "note": "Observations de corrections, non assimilées à des réponses apprises.",
+  "overview": {
+    "ok": true,
+    "route": "https://general.global-exam.com/activity/4503599673099410/result",
+    "score": {
+      "earned": 2,
+      "total": 10
+    },
+    "questions": [
+      {
+        "number": 1,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 2,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 3,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 4,
+        "indicator": "correct"
+      },
+      {
+        "number": 5,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 6,
+        "indicator": "correct"
+      },
+      {
+        "number": 7,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 8,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 9,
+        "indicator": "incorrect"
+      },
+      {
+        "number": 10,
+        "indicator": "incorrect"
+      }
+    ],
+    "tabs": [
+      "Vos réponses",
+      "Correction",
+      "Explication"
+    ]
+  },
+  "questions": [
+    {
+      "number": 1,
+      "indicator": "incorrect",
+      "tabs": {},
+      "errors": [
+        "question_button_not_clickable"
+      ]
+    },
+    {
+      "number": 2,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nSheriff: Thanks to you, we've \nretrieve\n the biggest thief in Paris.\nHaley: Sheriff, I have a weird request. Can I see the motel's \nsecurity footage\n ?\nSheriff: Sure, I can \narrested\n it for you.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\nSheriff: Thanks to you, we've \narrested\n the biggest thief in Paris.\nHaley: Sheriff, I have a weird request. Can I see the motel's \nsecurity footage\n ?\nSheriff: Sure, I can \nretrieve\n it for you.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\n\n(A) La police a passé les menottes au voleur et l’a emmené en prison. (B) Haley demande à voir l’enregistrement vidéo CCTV du motel. (C) Le shérif ira chercher la vidéo de surveillance pour Haley.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 3,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nM5-S1-2.jpg\nM5-S1-3.jpg\nM5-S1-1.jpg\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nChoisissez l'image qui correspond à : The man works at a radio station.\nM5-S1-2.jpg\nM5-S1-3.jpg\nM5-S1-1.jpg\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Choisissez l'image qui correspond à : The man works at a radio station."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nChoisissez l'image qui correspond à : The man works at a radio station.\n\n(A) Il parle dans un micro et travaille pour une station de radio. (B) Le bâtiment sert à stocker des boîtes. (C) L’homme regarde un enregistrement vidéo filmé par une caméra CCTV.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Choisissez l'image qui correspond à : The man works at a radio station."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 4,
+      "indicator": "correct",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nBravo !\n\nVous avez renseigné toutes les bonnes réponses.\nThe police weren't able to catch the thief, so they still haven't \narrested\n him.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Bravo !\n\nVous avez renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\nThe police weren't able to catch the thief, so they still haven't \narrested\n him.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nComplétez le texte en déplaçant les mots manquants\n\n« Arrested » signifie passer les menottes à quelqu’un et l’emmener en prison. « To retrieve something » signifie aller chercher quelque chose et le ramener. « Warehouse » est un grand bâtiment destiné au stockage.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 5,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\narrest\nradio\nretrieve\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : The sheriff left a file in his office, so he went to _____________ it.\narrest\nradio\nretrieve\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Sélectionnez la bonne réponse : The sheriff left a file in his office, so he went to _____________ it."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : The sheriff left a file in his office, so he went to _____________ it.\n\n(C) « Retrieve » est correct. Le shérif va à son bureau pour ramener le fichier. (A) Incorrect. « To arrest » signifie passer les menottes à quelqu’un. (B) Incorrect. « Radio » est un appareil de communication.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Sélectionnez la bonne réponse : The sheriff left a file in his office, so he went to _____________ it."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 6,
+      "indicator": "correct",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nBravo !\n\nVous avez renseigné toutes les bonnes réponses.\nR\nA\nD\nI\nO\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Bravo !\n\nVous avez renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [
+            "R\nA\nD\nI\nO"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nOrganisez les lettres pour former un mot\nR\nA\nD\nI\nO\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Organisez les lettres pour former un mot"
+          ],
+          "answer_zones": [
+            "R\nA\nD\nI\nO"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nOrganisez les lettres pour former un mot\n\nLe mot est « RADIO ». C’est un appareil électronique qui peut émettre et recevoir des signaux et des sons.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Organisez les lettres pour former un mot"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 7,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nBy tonight, the police \nwill have received\n the thief of Paris. By then, the marketing team \nwill have bought\n plane tickets home, and they \nwill have arrested\n their belongings!\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nComplétez le texte en déplaçant les mots manquants\nBy tonight, the police \nwill have arrested\n the thief of Paris. By then, the marketing team \nwill have bought\n plane tickets home, and they \nwill have received\n their belongings!\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nZoomer\nComplétez le texte en déplaçant les mots manquants\n\n« Will have arrested » est le futur antérieur de « arrest ». « Will have bought » est le futur antérieur de « buy ». « Will have received » est le futur antérieur de « receive ».\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Complétez le texte en déplaçant les mots manquants"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 8,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nBy yesterday, we will have packed our things.\nBy morning, the police will have retrieved everything.\nBy tonight, they will have checked the security footage.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nUne de ces réponses est incorrecte, indiquez-nous laquelle !\nBy yesterday, we will have packed our things.\nBy morning, the police will have retrieved everything.\nBy tonight, they will have checked the security footage.\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Une de ces réponses est incorrecte, indiquez-nous laquelle !"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nUne de ces réponses est incorrecte, indiquez-nous laquelle !\n\n(A) Incorrect. « By yesterday » renvoie au passé, pas à l’avenir. (B) Correct. « By morning » fait référence à l'avenir. (C) Correct. « By tonight » fait référence à l'avenir.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Une de ces réponses est incorrecte, indiquez-nous laquelle !"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 9,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses.\nwill have been searching\nwill search\nwill have searched\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Pas d’inquiétude !\n\nVous n’avez pas renseigné de bonnes réponses."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : Before dinner, the police _____________ the thief's warehouse.\nwill have been searching\nwill search\nwill have searched\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Sélectionnez la bonne réponse : Before dinner, the police _____________ the thief's warehouse."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nSélectionnez la bonne réponse : Before dinner, the police _____________ the thief's warehouse.\n\n(C) « Will have searched » est correct. C’est le futur antérieur. (A) Incorrect. « Will have been searching » est le futur antérieur continu. (B) Incorrect. « Will search » est le futur simple.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Sélectionnez la bonne réponse : Before dinner, the police _____________ the thief's warehouse."
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    },
+    {
+      "number": 10,
+      "indicator": "incorrect",
+      "tabs": {
+        "Vos réponses": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nPresque !\n\nVous n’avez pas renseigné toutes les bonnes réponses.\nbought\nthen,\ntickets\nwill\nhave\nby\nplane\nwe\nhome\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Presque !\n\nVous n’avez pas renseigné toutes les bonnes réponses."
+          ],
+          "answer_zones": [
+            "bought\nthen,\ntickets\nwill\nhave\nby\nplane\nwe\nhome"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Correction": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les mots pour former une phrase\nby\nthen,\nwe\nwill\nhave\nbought\nplane\ntickets\nhome\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Organisez les mots pour former une phrase"
+          ],
+          "answer_zones": [
+            "by\nthen,\nwe\nwill\nhave\nbought\nplane\ntickets\nhome"
+          ],
+          "explicit_correct_markers": []
+        },
+        "Explication": {
+          "route": "https://general.global-exam.com/activity/4503599673099410/result",
+          "text": "Anglais\nGeneral\nAccueil\nParcours\nRessources\nStatistiques\nConversations\nRetour au parcours\n\nVotre score\n\n2\n/ 10\nNe vous découragez pas !\n\nNotre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complétez votre apprentissage en travaillant avec les fiches de révision, disponibles depuis \nvotre bibliothèque\n\nProtect And Serve\nRejouer l'activité\n1\n2\n\nCompréhension\n\n3\n4\n5\n6\n\nVocabulaire\n\n7\n8\n9\n10\n\nGrammaire\n\nOrganisez les mots pour former une phrase\n\nLe futur antérieur s’emploie pour parler de choses qui se produiront avant un autre moment précis de l’avenir. C’est pourquoi il est nécessaire d’utiliser une expression de temps dans la phrase.\n\nVos réponses\nCorrection\nExplication\nRejouer l'activité\nPasser à la suite",
+          "headings": [
+            "Ne vous découragez pas !",
+            "Protect And Serve",
+            "Organisez les mots pour former une phrase"
+          ],
+          "answer_zones": [],
+          "explicit_correct_markers": []
+        }
+      },
+      "errors": []
+    }
+  ],
+  "questions_requested": 10,
+  "questions_inspected": 9
+}

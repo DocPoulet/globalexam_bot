@@ -1,0 +1,817 @@
+{
+  "schema": "globalexam_site_scan_v1",
+  "label": "resultat_avant_revision",
+  "captured_at": "2026-10-14T09:28:59",
+  "route": "https://general.global-exam.com/activity/4503599673099410/result",
+  "document": {
+    "title": "Correction",
+    "lang": "",
+    "visible_text": "Anglais General Accueil Parcours Ressources Statistiques Conversations Retour au parcours Votre score 2 / 10 Ne vous découragez pas ! Notre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complét"
+  },
+  "headings": [
+    {
+      "level": "h2",
+      "text": "Ne vous découragez pas !"
+    },
+    {
+      "level": "h2",
+      "text": "Protect And Serve"
+    },
+    {
+      "level": "h2",
+      "text": "Pas d’inquiétude ! Vous n’avez pas renseigné de bonnes réponses."
+    }
+  ],
+  "controls": [
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+      "role": "",
+      "type": "button",
+      "label": "Anglais",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "false",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+      "role": "",
+      "type": "button",
+      "label": "General",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "false",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+      "role": "",
+      "type": "button",
+      "label": "components/top-bar/settings",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "false",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Rejouer l'activité",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "grid size-7 shrink-0 place-content-center rounded-8 bg-primary-800 text-white transition-colors hover:bg-primary-700",
+      "role": "",
+      "type": "button",
+      "label": "Faire défiler vers la gauche",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center bg-error-800 border-3 border-error-900 text-white",
+      "role": "",
+      "type": "button",
+      "label": "1",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "2",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "3",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-success-400 text-success-800 hover:bg-success-300 focus-visible:bg-success-300",
+      "role": "",
+      "type": "button",
+      "label": "4",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "5",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-success-400 text-success-800 hover:bg-success-300 focus-visible:bg-success-300",
+      "role": "",
+      "type": "button",
+      "label": "6",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "7",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "8",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "9",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+      "role": "",
+      "type": "button",
+      "label": "10",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "absolute top-1/2 grid size-7 shrink-0 -translate-y-1/2 place-content-center rounded-8 bg-primary-800 text-white transition-[background-color,transform] hover:bg-primary-700 -translate-x-full",
+      "role": "",
+      "type": "button",
+      "label": "Faire défiler vers la droite",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-primary-400 bg-background-300 t",
+      "role": "",
+      "type": "button",
+      "label": "Vos réponses",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-background-400 text-typeface-80",
+      "role": "",
+      "type": "button",
+      "label": "Correction",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-background-400 text-typeface-80",
+      "role": "",
+      "type": "button",
+      "label": "Explication",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Rejouer l'activité",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Passer à la suite",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    },
+    {
+      "tag": "button",
+      "id": "",
+      "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+      "role": "",
+      "type": "button",
+      "label": "Ouvrir le formulaire de retour",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": ""
+    }
+  ],
+  "links": [
+    {
+      "text": "",
+      "path": "/"
+    },
+    {
+      "text": "Accueil",
+      "path": "/"
+    },
+    {
+      "text": "Parcours",
+      "path": "/levels"
+    },
+    {
+      "text": "Ressources",
+      "path": "/search"
+    },
+    {
+      "text": "Statistiques",
+      "path": "/stats/show"
+    },
+    {
+      "text": "Conversations",
+      "path": "/conversations/challenges"
+    },
+    {
+      "text": "Retour au parcours",
+      "path": "/levels/content/8897"
+    },
+    {
+      "text": "votre bibliothèque",
+      "path": "/library/study-sheets/categories"
+    }
+  ],
+  "containers": [
+    {
+      "tag": "header",
+      "id": "",
+      "classes": "bg-white z-40 w-full lg:shadow-alt print:hidden sticky top-0",
+      "role": "",
+      "type": "",
+      "label": "Anglais General Accueil Parcours Ressources Statistiques Conversations",
+      "testid": "",
+      "data_name": "",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": "",
+      "children": 1
+    },
+    {
+      "tag": "div",
+      "id": "",
+      "classes": "drop-zone ordering-drop-zone flex w-full flex-wrap items-start gap-5 vertically-stacked content-start",
+      "role": "",
+      "type": "",
+      "label": "Okay, listen up! By morning, they will have retrieved your things. Thanks! By the time we leave, we'll also have learned if the motel really has ghosts. When will you retrieve everything?",
+      "testid": "",
+      "data_name": "user-answer-container",
+      "data_state": "",
+      "aria_expanded": "",
+      "aria_disabled": "",
+      "children": 3
+    }
+  ],
+  "dom_counts": {
+    "elements_scanned": 520,
+    "controls": 22,
+    "containers": 2,
+    "buttons": 22,
+    "password_inputs": 0,
+    "radio_inputs": 0,
+    "checkbox_inputs": 0,
+    "text_inputs": 0,
+    "textareas": 0,
+    "selects": 0,
+    "radiogroups": 0,
+    "draggables": 0,
+    "dropzones": 1
+  },
+  "frames": [
+    {
+      "title": "Correction",
+      "lang": "",
+      "visible_text": "Anglais General Accueil Parcours Ressources Statistiques Conversations Retour au parcours Votre score 2 / 10 Ne vous découragez pas ! Notre conseil : lisez les corrections puis refaites cette activité en prenant le temps de décomposer chaque question. Besoin d’approfondir certains concepts ? Complét",
+      "headings": [
+        {
+          "level": "h2",
+          "text": "Ne vous découragez pas !"
+        },
+        {
+          "level": "h2",
+          "text": "Protect And Serve"
+        },
+        {
+          "level": "h2",
+          "text": "Pas d’inquiétude ! Vous n’avez pas renseigné de bonnes réponses."
+        }
+      ],
+      "controls": [
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+          "role": "",
+          "type": "button",
+          "label": "Anglais",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "false",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+          "role": "",
+          "type": "button",
+          "label": "General",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "false",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group relative z-20 flex h-full items-center gap-x-4 px-3 py-7 outline-hidden ring-0 ring-inset transition-all duration-300 focus-visible:ring-2 focus-visible:ring-secondary-600 lg:py-5 cursor-pointer",
+          "role": "",
+          "type": "button",
+          "label": "components/top-bar/settings",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "false",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Rejouer l'activité",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "grid size-7 shrink-0 place-content-center rounded-8 bg-primary-800 text-white transition-colors hover:bg-primary-700",
+          "role": "",
+          "type": "button",
+          "label": "Faire défiler vers la gauche",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center bg-error-800 border-3 border-error-900 text-white",
+          "role": "",
+          "type": "button",
+          "label": "1",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "2",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "3",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-success-400 text-success-800 hover:bg-success-300 focus-visible:bg-success-300",
+          "role": "",
+          "type": "button",
+          "label": "4",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "5",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-success-400 text-success-800 hover:bg-success-300 focus-visible:bg-success-300",
+          "role": "",
+          "type": "button",
+          "label": "6",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "7",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "8",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "9",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "snap-x w-12 h-12 rounded-size-18 flex justify-center items-center border border-error-400 text-error-800 hover:bg-error-200 focus-visible:bg-error-200",
+          "role": "",
+          "type": "button",
+          "label": "10",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "absolute top-1/2 grid size-7 shrink-0 -translate-y-1/2 place-content-center rounded-8 bg-primary-800 text-white transition-[background-color,transform] hover:bg-primary-700 -translate-x-full",
+          "role": "",
+          "type": "button",
+          "label": "Faire défiler vers la droite",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-primary-400 bg-background-300 t",
+          "role": "",
+          "type": "button",
+          "label": "Vos réponses",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-background-400 text-typeface-80",
+          "role": "",
+          "type": "button",
+          "label": "Correction",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "rounded-8 border text-center font-semibold outline-hidden hover:bg-background-200 focus-visible:border-secondary-500 p-3 text-16 leading-5 sm:text-14 2xl:text-16 border-background-400 text-typeface-80",
+          "role": "",
+          "type": "button",
+          "label": "Explication",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Rejouer l'activité",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Passer à la suite",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        },
+        {
+          "tag": "button",
+          "id": "",
+          "classes": "group focus-visible:ring-secondary-900 relative inline-flex origin-center cursor-pointer justify-center overflow-hidden rounded-full border-2 font-bold ring-0 outline-hidden transition duration-300 ea",
+          "role": "",
+          "type": "button",
+          "label": "Ouvrir le formulaire de retour",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": ""
+        }
+      ],
+      "links": [
+        {
+          "text": "",
+          "path": "/"
+        },
+        {
+          "text": "Accueil",
+          "path": "/"
+        },
+        {
+          "text": "Parcours",
+          "path": "/levels"
+        },
+        {
+          "text": "Ressources",
+          "path": "/search"
+        },
+        {
+          "text": "Statistiques",
+          "path": "/stats/show"
+        },
+        {
+          "text": "Conversations",
+          "path": "/conversations/challenges"
+        },
+        {
+          "text": "Retour au parcours",
+          "path": "/levels/content/8897"
+        },
+        {
+          "text": "votre bibliothèque",
+          "path": "/library/study-sheets/categories"
+        }
+      ],
+      "containers": [
+        {
+          "tag": "header",
+          "id": "",
+          "classes": "bg-white z-40 w-full lg:shadow-alt print:hidden sticky top-0",
+          "role": "",
+          "type": "",
+          "label": "Anglais General Accueil Parcours Ressources Statistiques Conversations",
+          "testid": "",
+          "data_name": "",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": "",
+          "children": 1
+        },
+        {
+          "tag": "div",
+          "id": "",
+          "classes": "drop-zone ordering-drop-zone flex w-full flex-wrap items-start gap-5 vertically-stacked content-start",
+          "role": "",
+          "type": "",
+          "label": "Okay, listen up! By morning, they will have retrieved your things. Thanks! By the time we leave, we'll also have learned if the motel really has ghosts. When will you retrieve everything?",
+          "testid": "",
+          "data_name": "user-answer-container",
+          "data_state": "",
+          "aria_expanded": "",
+          "aria_disabled": "",
+          "children": 3
+        }
+      ],
+      "dom_counts": {
+        "elements_scanned": 520,
+        "controls": 22,
+        "containers": 2,
+        "buttons": 22,
+        "password_inputs": 0,
+        "radio_inputs": 0,
+        "checkbox_inputs": 0,
+        "text_inputs": 0,
+        "textareas": 0,
+        "selects": 0,
+        "radiogroups": 0,
+        "draggables": 0,
+        "dropzones": 1
+      },
+      "route": "https://general.global-exam.com/activity/4503599673099410/result"
+    },
+    {
+      "route": "",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://hal9000.redintelligence.net/retarget",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://ban.tangooserver.com/rtb/google/cookiematch.aspx",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://11868943.fls.doubleclick.net/activityi;dc_pre=CPG0wI_-uJcDFUYQpggdgOY3Cw;src=11868943;type=invmedia;cat=dbmis0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=0;npa=0;gdpr=;gdpr_consent=;ord=6978416608551.771",
+      "access": "external_frame_skipped"
+    },
+    {
+      "route": "https://16537892.fls.doubleclick.net/activityi;dc_pre=COTqwI_-uJcDFVLDUwgdn_ABVw;src=16537892;type=invmedia;cat=dbmis0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;gdpr=;gdpr_consent=;ord=6978416608551.771",
+      "access": "external_frame_skipped"
+    }
+  ],
+  "detected": {
+    "kind": "result",
+    "confidence": 0.99,
+    "evidence": [
+      "route résultat"
+    ]
+  },
+  "structure_hash": "106e57e51e609c9b"
+}

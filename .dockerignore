@@ -1,0 +1,17 @@
+**/__pycache__/
+**/*.pyc
+profile/
+data/
+models/
+diagnostics/
+logs/
+venv/
+.venv/
+server/.env
+.git/
+
+**/.env
+**/.env.*.local
+**/*.sqlite3*
+**/*.gguf
+**/node_modules/

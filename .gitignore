@@ -9,3 +9,22 @@ diagnostics/*.png
 data/*.sqlite3
 data/*.sqlite3-shm
 data/*.sqlite3-wal
+
+# DOM diagnostic nouveau site (peut contenir du texte personnel)
+diagnostics/site_scan/
+models/*.gguf
+
+# Traces locales (peuvent reveler habitudes de navigation)
+logs/*.jsonl
+
+# Aperçus communautaires locaux (ne jamais versionner/diffuser sans revue)
+data/community_*.json
+data/community_*.jsonl
+
+# Identifiants privés / fichiers serveur
+server/.env
+.env
+
+# Cloud credentials / local overrides
+server/.env.*.local
+.railway/*.secret*

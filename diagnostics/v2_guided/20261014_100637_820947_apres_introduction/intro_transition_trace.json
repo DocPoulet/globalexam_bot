@@ -1,0 +1,14 @@
+{
+  "schema": "globalexam_intro_transition_v1",
+  "clicked": true,
+  "ok": true,
+  "reason": null,
+  "before_route": "https://general.global-exam.com/activity/4503599685050605/content/53481",
+  "after_route": "https://general.global-exam.com/activity/4503599685050605/content/53482",
+  "visible_change": true,
+  "has_answer_controls": false,
+  "still_introduction": false,
+  "screen_kind": "exercise",
+  "fields_detected": 0,
+  "labels_detected": 0
+}

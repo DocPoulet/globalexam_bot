@@ -1,0 +1,34 @@
+Écran : resultat_avant_revision
+Route : https://general.global-exam.com/activity/4503599673099410/result
+Détection : {'kind': 'result', 'confidence': 0.99, 'evidence': ['route résultat']}
+Contrôles : 22
+Conteneurs : 2
+
+Titres :
+- h2: Ne vous découragez pas !
+- h2: Protect And Serve
+- h2: Pas d’inquiétude ! Vous n’avez pas renseigné de bonnes réponses.
+
+Contrôles visibles :
+- <button> role= type=button name= testid= label=Anglais
+- <button> role= type=button name= testid= label=General
+- <button> role= type=button name= testid= label=components/top-bar/settings
+- <button> role= type=button name= testid= label=Rejouer l'activité
+- <button> role= type=button name= testid= label=Faire défiler vers la gauche
+- <button> role= type=button name= testid= label=1
+- <button> role= type=button name= testid= label=2
+- <button> role= type=button name= testid= label=3
+- <button> role= type=button name= testid= label=4
+- <button> role= type=button name= testid= label=5
+- <button> role= type=button name= testid= label=6
+- <button> role= type=button name= testid= label=7
+- <button> role= type=button name= testid= label=8
+- <button> role= type=button name= testid= label=9
+- <button> role= type=button name= testid= label=10
+- <button> role= type=button name= testid= label=Faire défiler vers la droite
+- <button> role= type=button name= testid= label=Vos réponses
+- <button> role= type=button name= testid= label=Correction
+- <button> role= type=button name= testid= label=Explication
+- <button> role= type=button name= testid= label=Rejouer l'activité
+- <button> role= type=button name= testid= label=Passer à la suite
+- <button> role= type=button name= testid= label=Ouvrir le formulaire de retour

@@ -1,0 +1,19 @@
+{
+  "schema": "globalexam_activity_open_trace_v2",
+  "requested_module": 5,
+  "requested_activity": 1,
+  "action": {
+    "ok": true,
+    "clicked": true,
+    "reason": null,
+    "title": "Protect And Serve"
+  },
+  "initial_route": "https://general.global-exam.com/levels/content",
+  "ready_route": "https://general.global-exam.com/levels/content",
+  "after_route": "https://general.global-exam.com/activity/6755399458051388/content/53453",
+  "new_tab": false,
+  "visible_structure_changed": true,
+  "activity_evidence": "activity_route",
+  "screen_kind": "exercise",
+  "diagnostic_note": null
+}

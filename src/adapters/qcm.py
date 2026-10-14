@@ -7,11 +7,33 @@ class QcmAdapter(ExerciseAdapter):
     name = "qcm"
     priority = 100
 
+    def _usable_control(self, el):
+        """Accepte les inputs sr-only reliés à un label visible."""
+        try:
+            if el.is_visible():
+                return True
+            element_id = el.get_attribute("id")
+            if element_id:
+                labels = self.page.locator("label")
+                for i in range(min(labels.count(), 100)):
+                    label = labels.nth(i)
+                    if label.get_attribute("for") == element_id and label.is_visible():
+                        return True
+            parent_label = el.locator("xpath=ancestor::label[1]")
+            if parent_label.count() and parent_label.first.is_visible():
+                return True
+            parent = el.locator("xpath=parent::*")
+            return ("sr-only" in (el.get_attribute("class") or "")
+                    and parent.count() > 0 and parent.first.is_visible()
+                    and bool(parent.first.inner_text().strip()))
+        except Exception:
+            return False
+
     def _kind(self):
         radios = self.page.locator("input[type='radio']")
         for i in range(radios.count()):
             try:
-                if radios.nth(i).is_visible():
+                if self._usable_control(radios.nth(i)):
                     return "radio"
             except Exception:
                 pass
@@ -19,7 +41,7 @@ class QcmAdapter(ExerciseAdapter):
         checks = self.page.locator("input[type='checkbox']")
         for i in range(checks.count()):
             try:
-                if checks.nth(i).is_visible():
+                if self._usable_control(checks.nth(i)):
                     return "checkbox"
             except Exception:
                 pass
@@ -70,7 +92,7 @@ class QcmAdapter(ExerciseAdapter):
             el = locator.nth(i)
 
             try:
-                if not el.is_visible():
+                if not self._usable_control(el):
                     continue
             except Exception:
                 continue
@@ -108,9 +130,30 @@ class QcmAdapter(ExerciseAdapter):
             f"input[type='{item['kind']}']"
         ).nth(item["dom_index"])
 
-        if not safe_click(target):
-            return False
-
+        # Sur la nouvelle UI, l'input radio est sr-only : cliquer le label.
+        clicked = False
+        element_id = target.get_attribute("id")
+        if element_id:
+            labels = self.page.locator("label")
+            for i in range(min(labels.count(), 100)):
+                label = labels.nth(i)
+                try:
+                    if label.get_attribute("for") == element_id and label.is_visible():
+                        clicked = safe_click(label)
+                        if clicked:
+                            break
+                except Exception:
+                    pass
+        if not clicked:
+            parent_label = target.locator("xpath=ancestor::label[1]")
+            if parent_label.count() and parent_label.first.is_visible():
+                clicked = safe_click(parent_label.first)
+        if not clicked:
+            try:
+                target.check(timeout=1500)
+                clicked = True
+            except Exception:
+                return False
         self.page.wait_for_timeout(250)
         return True
 

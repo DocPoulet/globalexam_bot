@@ -1,0 +1,19 @@
+{
+  "schema": "globalexam_activity_open_trace_v2",
+  "requested_module": 5,
+  "requested_activity": 1,
+  "action": {
+    "ok": false,
+    "clicked": false,
+    "reason": "etat_interdit:unverified",
+    "title": "Protect And Serve"
+  },
+  "initial_route": "https://general.global-exam.com/levels/content",
+  "ready_route": "https://general.global-exam.com/levels/content",
+  "after_route": "https://general.global-exam.com/levels/content",
+  "new_tab": false,
+  "visible_structure_changed": false,
+  "activity_evidence": null,
+  "screen_kind": "catalog",
+  "diagnostic_note": null
+}

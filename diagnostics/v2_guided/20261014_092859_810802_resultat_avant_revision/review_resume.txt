@@ -1,0 +1,15 @@
+Route: https://general.global-exam.com/activity/4503599673099410/result
+Score: {'earned': 2, 'total': 10}
+Questions: 10
+Avec relevé: 9
+Pas de soumission ; pas d'ajout à learned_answers.
+Question 1: incorrect | onglets:  | erreurs: question_button_not_clickable
+Question 2: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 3: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 4: correct | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 5: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 6: correct | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 7: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 8: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 9: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune
+Question 10: incorrect | onglets: Vos réponses, Correction, Explication | erreurs: aucune

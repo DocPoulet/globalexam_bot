@@ -1,0 +1,17 @@
+{
+  "llm": {
+    "enabled": true,
+    "provider": "openai_compatible",
+    "model": "YOUR_MODEL",
+    "base_url": "https://api.openai.com/v1",
+    "timeout_seconds": 35,
+    "temperature": 0.0,
+    "min_confidence": 0.35,
+    "api_key_env": "OPENAI_API_KEY"
+  },
+  "community": {
+    "enabled": false,
+    "upload_confirmed_answers": false,
+    "endpoint": null
+  }
+}
